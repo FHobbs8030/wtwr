@@ -1,0 +1,9 @@
+.weather {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.weather__temp {
+  font-size: 48px;
+  font-weight: bold;
+}
