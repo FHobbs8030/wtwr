@@ -1,10 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./blocks/index.css"; 
-import App from "./components/App.jsx"; 
+import "../blocks/Main.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function Main({ weatherData, clothingItems }) {
+  return (
+    <div>
+      <h2>Main component is working</h2>
+      <p>Temperature: {weatherData.temperature}°F</p>
+      <p>Weather Type: {weatherData.type}</p>
+      <ul>
+        {clothingItems.map((item) => (
+          <li key={item._id}>
+            {item.name} - {item.weather}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Main;
