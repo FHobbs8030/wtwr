@@ -1,19 +1,10 @@
 import React from "react";
-import WeatherCard from "./WeatherCard";
-import ItemCard from "./ItemCard";
-import "../blocks/Main.css";
+import ReactDOM from "react-dom/client";
+import "./blocks/index.css"; 
+import App from "./components/App.jsx"; 
 
-function Main({ weatherData, clothingItems }) {
-  return (
-    <main className="main">
-      <WeatherCard weatherData={weatherData} />
-      <ul className="main__clothing-items">
-        {clothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} />
-        ))}
-      </ul>
-    </main>
-  );
-}
-
-export default Main;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
