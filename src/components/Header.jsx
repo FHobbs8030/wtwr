@@ -17,10 +17,10 @@ function Header({ onAddClothes }) {
       </div>
       <div className="header__right">
         <button className="header__button" onClick={onAddClothes}>
-          Add Clothes
+          + Add Clothes
         </button>
         <div className="header__profile">
-          <p className="header__username">Fred</p>
+          <p className="header__username">Terrence Tegegne</p>
           <img src={Avatar} alt="User avatar" className="header__avatar" />
         </div>
       </div>

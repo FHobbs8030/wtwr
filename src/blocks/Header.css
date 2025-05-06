@@ -27,8 +27,11 @@
 
 .header__button {
   padding: 8px 12px;
-  background-color: #000;
-  color: #fff;
+  color: #000;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
   border: none;
   cursor: pointer;
 }
@@ -40,11 +43,15 @@
 }
 
 .header__username {
-  font-weight: bold;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
 }
 
 .header__avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5)
 }
