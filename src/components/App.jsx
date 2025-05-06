@@ -1,23 +1,26 @@
-import React from "react";
-import Header from "./Header.jsx";
-import Main from "./Main.jsx";
-import Footer from "./Footer.jsx";
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
 import "../blocks/App.css";
+import { defaultClothingItems } from "../utils/clothingItems";
 
 function App() {
-  const handleAddClothes = () => {
-    console.log("Open modal");
-  };
+  const [clothingItems, setClothingItems] = useState([]);
+
+  useEffect(() => {
+    // Populate clothing items on component mount
+    setClothingItems(defaultClothingItems);
+  }, []);
 
   const weatherData = {
     type: "hot",
     temperature: 88,
   };
 
-  const clothingItems = [
-    { _id: "1", name: "T-shirt", weather: "hot" },
-    { _id: "2", name: "Sweater", weather: "cold" },
-  ];
+  const handleAddClothes = () => {
+    console.log("Open modal");
+  };
 
   return (
     <>

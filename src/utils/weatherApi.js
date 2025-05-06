@@ -1,24 +1,30 @@
-import { latitude, longitude, weatherApiKey } from "./constants";
+import sunnyDay from "../images/sunny-day.jpg";
+import clearNight from "../images/clear-night.jpg";
+import rainyDay from "../images/rainy-day.jpg";
+import rainyNight from "../images/rainy-night.jpg";
+import snowyDay from "../images/snowy-day.jpg";
+import snowyNight from "../images/snowy-night.jpg";
+import defaultBackground from "../images/default.jpg";
 
-const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+export function getBackgroundImage(condition, timestamp, sunrise, sunset) {
+  const isDay = timestamp >= sunrise && timestamp < sunset;
+  const backgrounds = {
+    Clear: {
+      day: sunnyDay,
+      night: clearNight,
+    },
+    Rain: {
+      day: rainyDay,
+      night: rainyNight,
+    },
+    Snow: {
+      day: snowyDay,
+      night: snowyNight,
+    },
+  };
 
-export function getWeather() {
-  return fetch(
-    `${baseUrl}?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherApiKey}`
-  ).then((res) => {
-    if (!res.ok) {
-      throw new Error("Failed to fetch weather");
-    }
-    return res.json();
-  });
+  return (
+    backgrounds[condition]?.[isDay ? "day" : "night"] || defaultBackground
+  );
 }
 
-export function getWeatherType(temperature) {
-  if (temperature >= 86) {
-    return "hot";
-  } else if (temperature >= 66) {
-    return "warm";
-  } else {
-    return "cold";
-  }
-}

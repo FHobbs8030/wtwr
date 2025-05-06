@@ -1,5 +1,7 @@
 import React from "react";
 import "../blocks/header.css";
+import Logo from "../images/Logo.svg";
+import Avatar from "../images/Avatar.png"; // adjust the file extension based on your actual image file
 
 function Header({ onAddClothes }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,7 +12,7 @@ function Header({ onAddClothes }) {
   return (
     <header className="header">
       <div className="header__left">
-        <img src="/vite.svg" alt="Logo" className="header__logo" />
+        <img src={Logo} alt="Logo" className="header__logo" />
         <p className="header__date-location">{currentDate}, Carson City</p>
       </div>
       <div className="header__right">
@@ -19,11 +21,7 @@ function Header({ onAddClothes }) {
         </button>
         <div className="header__profile">
           <p className="header__username">Fred</p>
-          <img
-            src="https://i.imgur.com/your-avatar.png"
-            alt="User avatar"
-            className="header__avatar"
-          />
+          <img src={Avatar} alt="User avatar" className="header__avatar" />
         </div>
       </div>
     </header>
