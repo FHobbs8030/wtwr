@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
-import Main from "./blocks/Main";
+import Main from "../components/Main.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
