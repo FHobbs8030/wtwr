@@ -1,10 +1,13 @@
 import React from "react";
 import "../blocks/Main.css";
-import ItemCard from "./ItemCard"; // Add this import
+import ItemCard from "./ItemCard";
+import WeatherCard from "./WeatherCard"; 
 
 function Main({ weatherData, clothingItems }) {
   return (
     <main className="main">
+      <WeatherCard weatherData={weatherData} />
+
       <section className="cards">
         <div className="cards__list">
           {clothingItems.map((item) => (

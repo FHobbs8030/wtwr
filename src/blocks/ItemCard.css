@@ -8,6 +8,13 @@
   text-align: center;
 }
 
+.item-card__image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
 .item-card__name {
   font-size: 16px;
   font-weight: bold;
