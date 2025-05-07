@@ -1,8 +1,12 @@
 .header {
+  max-width: 1360px;
+  max-height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  margin-top: 32px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .header__left {

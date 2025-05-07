@@ -10,3 +10,14 @@
   padding: 0;
   margin-top: 20px;
 }
+
+.cards {
+  padding: 20px;
+}
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
