@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
 import Main from "../components/Main.jsx";
+import { defaultClothingItems } from "../utils/clothingItems.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -14,19 +15,15 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("API Response:", data); // This will help us see the data
+        console.log("API Response:", data); 
         setWeatherData(data);
       })
       .catch((error) => {
         console.error("Error fetching weather:", error);
       });
-  }, []); // Empty array means this runs once when component mounts
+  }, []);
 
-  const clothingItems = {
-    hot: ["sunglasses", "tank top", "shorts", "sandals"],
-    warm: ["t-shirt", "jeans", "sneakers"],
-    cold: ["sweater", "jacket", "boots", "beanie"],
-  };
+  const [clothingItems] = useState(defaultClothingItems);
 
   return (
     <div className="App">
