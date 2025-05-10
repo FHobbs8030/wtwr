@@ -16,6 +16,9 @@ function Main({ weatherData, clothingItems }) {
     return "cold";
   };
 
+
+  const weatherType = getWeatherType();
+
   const filteredItems = clothingItems.filter(
     (item) => item.weather === weatherType
   );
