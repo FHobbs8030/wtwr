@@ -1,9 +1,13 @@
-.weather {
-  text-align: center;
-  margin-top: 20px;
+.weather-card {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.weather__temp {
-  font-size: 48px;
-  font-weight: bold;
-}
