@@ -1,5 +1,6 @@
 import React from "react";
 import "../blocks/Main.css";
+import "../blocks/ItemCard.css";
 import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
 
@@ -30,11 +31,13 @@ function Main({ weatherData, clothingItems }) {
       </p>
 
       <section className="cards">
-        <div className="cards__list">
+        <ul className="cards__list">
           {filteredItems.map((item) => (
-            <ItemCard key={item._id} item={item} />
+            <li key={item._id}>
+              <ItemCard item={item} />
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </main>
   );

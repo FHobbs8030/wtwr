@@ -1,12 +1,11 @@
-import "../blocks/ItemCard.css";
 import React from "react";
+import "../blocks/ItemCard.css";
 
 function ItemCard({ item }) {
   return (
-    <li className="item-card">
-      <img src={item.link} className="item-card__image" alt={item.name} />
-      <div className="item-card__name">{item.name}</div>
-      <div className="item-card__weather">{item.weather}</div>
+    <li className="card">
+      <p className="card__name">{item.name}</p>
+      <img className="card__image" src={item.link} alt={item.name} />
     </li>
   );
 }

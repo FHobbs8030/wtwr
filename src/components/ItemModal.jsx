@@ -27,7 +27,7 @@ function ItemModal({ item, onClose }) {
           type="button"
           onClick={onClose}
         ></button>
-        <img src={item.imageUrl} alt={item.name} className="modal__image" />
+        <img src={item.link} alt={item.name} className="modal__image" />
         <p className="modal__caption">{item.name}</p>
       </div>
     </div>

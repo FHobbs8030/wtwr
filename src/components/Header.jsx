@@ -1,9 +1,9 @@
 import React from "react";
 import "../blocks/header.css";
 import Logo from "../images/Logo.svg";
-import Avatar from "../images/Avatar.png"; // adjust the file extension based on your actual image file
+import Avatar from "../images/Avatar.png";
 
-function Header({ onAddClothes }) {
+function Header({ onAddClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -16,7 +16,7 @@ function Header({ onAddClothes }) {
         <p className="header__date-location">{currentDate}, Carson City</p>
       </div>
       <div className="header__right">
-        <button className="header__button" onClick={onAddClothes}>
+        <button className="header__button" onClick={onAddClick}>
           + Add Clothes
         </button>
         <div className="header__profile">
