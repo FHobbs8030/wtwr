@@ -3,6 +3,7 @@ import "../blocks/WeatherCard.css";
 import { getBackgroundImage } from "../utils/weatherApi";
 
 function WeatherCard({ weatherData }) {
+  console.log("🔥 WeatherCard ran"); // Place above your condition check
   console.log("WeatherCard component started:", weatherData);
 
   if (!weatherData || !weatherData.weather || !weatherData.sys) return null;
@@ -18,8 +19,6 @@ function WeatherCard({ weatherData }) {
     sunrise,
     sunset
   );
-
-  console.log("Selected background image:", backgroundImg);
 
   return (
     <section
