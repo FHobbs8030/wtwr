@@ -5,8 +5,8 @@ function ModalWithForm({
   title,
   name,
   buttonText,
-  children,
   onClose,
+  children,
   onSubmit,
 }) {
   useEffect(() => {
@@ -15,7 +15,6 @@ function ModalWithForm({
         onClose();
       }
     };
-
     document.addEventListener("keydown", handleEscClose);
     return () => document.removeEventListener("keydown", handleEscClose);
   }, [onClose]);
@@ -29,13 +28,9 @@ function ModalWithForm({
   return (
     <div className={`modal modal_type_${name}`} onClick={handleOverlayClick}>
       <div className="modal__content">
-        <button
-          className="modal__close"
-          type="button"
-          onClick={onClose}
-        ></button>
+        <button className="modal__close" type="button" onClick={onClose} />
         <h3 className="modal__title">{title}</h3>
-        <form name={name} className="modal__form" onSubmit={onSubmit}>
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
           <button type="submit" className="modal__submit-button">
             {buttonText}

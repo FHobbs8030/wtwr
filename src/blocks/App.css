@@ -1,3 +1,17 @@
-h1 {
-  color: #333;
+.app {
+  background-color: rgba(90, 111, 141, 1); /* match Figma */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 16px;
+}
+
+/* White content area centered */
+.app__content {
+  background-color: #fff;
+  width: 100%;
+  max-width: 1280px; /* adjust if needed */
+  min-height: 100vh;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
