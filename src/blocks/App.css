@@ -1,17 +1,24 @@
 .app {
-  background-color: rgba(90, 111, 141, 1); /* match Figma */
+  background-color: #5a6e8c; /* blue-grey */
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0 16px;
+  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* White content area centered */
+.app__title {
+  color: white;
+  font-size: 80px;
+  font-weight: 700;
+  text-align: center;
+  padding: 40px 0 20px;
+  margin: 0;
+}
+
 .app__content {
-  background-color: #fff;
-  width: 100%;
-  max-width: 1280px; /* adjust if needed */
-  min-height: 100vh;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 32px;
+  box-sizing: border-box;
 }

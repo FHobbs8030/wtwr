@@ -19,16 +19,22 @@
 
 .modal__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 2px;
+  right: 10px;
   background: transparent;
   border: none;
   width: 24px;
   height: 24px;
-  background-image: url('../images/close-icon.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
+  font-size: 28px;
+  line-height: 24px;
   cursor: pointer;
+  color: #545454;  /* Add this - a dark grey that will be visible on both backgrounds */
+  font-weight: bold;  /* Add this to make it more visible */
+}
+
+/* Add hover effect for better user experience */
+.modal__close:hover {
+  color: #000;  /* Darker on hover */
 }
 
 .modal__title {

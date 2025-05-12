@@ -28,7 +28,10 @@ function ItemModal({ item, onClose }) {
           onClick={onClose}
         ></button>
         <img src={item.link} alt={item.name} className="modal__image" />
-        <p className="modal__caption">{item.name}</p>
+        <div className="modal__info">
+          <h2 className="modal__title">{item.name}</h2>
+          <p className="modal__weather">Weather type: {item.weather}</p>
+        </div>
       </div>
     </div>
   );

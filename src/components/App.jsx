@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
 import "../vendor/normalize.css";
@@ -5,16 +6,25 @@ import Header from "../components/Header.jsx";
 import Main from "../components/Main.jsx";
 import Footer from "../components/Footer.jsx";
 import ItemModal from "../components/ItemModal.jsx";
-import { defaultClothingItems } from "../utils/clothingItems.js";
 import ModalWithForm from "../components/ModalWithForm.jsx";
+import { defaultClothingItems } from "../utils/clothingItems.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const handleAddClick = () => setIsAddModalOpen(true);
   const handleCloseModal = () => setIsAddModalOpen(false);
+
+  const handleCardClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleCloseItemModal = () => {
+    setSelectedItem(null);
+  };
 
   const validateForm = (name, imageUrl, weather) => {
     if (name.length < 2 || name.length > 30) {
@@ -76,11 +86,21 @@ function App() {
 
   return (
     <div className="app">
+      <h1 className="app__title">Sprint 10: WTWR</h1>
       <div className="app__content">
         <Header onAddClick={handleAddClick} />
-        <Main weatherData={weatherData} clothingItems={clothingItems} />
+        <Main
+          weatherData={weatherData}
+          clothingItems={clothingItems}
+          onCardClick={handleCardClick}
+        />
         <Footer />
       </div>
+
+      {selectedItem && (
+        <ItemModal item={selectedItem} onClose={handleCloseItemModal} />
+      )}
+
       {isAddModalOpen && (
         <ModalWithForm
           title="New Garment"
@@ -101,7 +121,6 @@ function App() {
               />
             </label>
           </div>
-
           <div className="modal__input-wrapper">
             <label className="modal__label">
               Image URL
@@ -114,7 +133,6 @@ function App() {
               />
             </label>
           </div>
-
           <div className="modal__input-wrapper">
             <label className="modal__label">
               Select the weather type:

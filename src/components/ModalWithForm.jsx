@@ -28,7 +28,8 @@ function ModalWithForm({
   return (
     <div className={`modal modal_type_${name}`} onClick={handleOverlayClick}>
       <div className="modal__content">
-        <button className="modal__close" type="button" onClick={onClose} />
+        <button className="modal__close" type="button" onClick={onClose}>×
+        </button>
         <h3 className="modal__title">{title}</h3>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}

@@ -1,11 +1,12 @@
+
 import React from "react";
 import "../blocks/Main.css";
 import "../blocks/ItemCard.css";
-import "../blocks/Cards.css";
 import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
+import "../blocks/Header.css"; 
 
-function Main({ weatherData, clothingItems }) {
+function Main({ weatherData, clothingItems, onCardClick }) {
   if (!weatherData || !weatherData.main) {
     return <p>Loading weather data...</p>;
   }
@@ -26,15 +27,15 @@ function Main({ weatherData, clothingItems }) {
   return (
     <main className="main">
       <WeatherCard weatherData={weatherData} />
-
       <p className="main__intro">
         Today is {Math.round(temperature)}°F / You may want to wear:
       </p>
-
       <section className="cards">
-        {filteredItems.map((item) => (
-          <ItemCard key={item._id} item={item} />
-        ))}
+        <ul className="cards__list">
+          {filteredItems.map((item) => (
+            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+          ))}
+        </ul>
       </section>
     </main>
   );

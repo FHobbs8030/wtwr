@@ -1,11 +1,11 @@
 import React from "react";
 import "../blocks/ItemCard.css";
 
-function ItemCard({ item }) {
+function ItemCard({ item, onCardClick }) {
   return (
-    <li className="card">
+    <li className="card" onClick={() => onCardClick(item)}>
       <p className="card__name">{item.name}</p>
-      <img className="card__image" src={item.link} alt={item.name} />
+      <img src={item.link} alt={item.name} className="card__image" />
     </li>
   );
 }
