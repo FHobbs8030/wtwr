@@ -69,7 +69,7 @@ function App() {
   };
 
   useEffect(() => {
-    const apiKey = "3d0d531d6ea32e66f08e7e0fa3be4ea0";
+    const apiKey = import.meta.env.VITE_APP_WEATHER_API_KEY;
     const city = "Carson City";
 
     fetch(
@@ -103,45 +103,81 @@ function App() {
 
       {isAddModalOpen && (
         <ModalWithForm
-          title="New Garment"
+          title="New garment"
           name="new-garment"
           buttonText="Add garment"
           onClose={handleCloseModal}
           onSubmit={handleAddGarmentSubmit}
         >
           <div className="modal__input-wrapper">
-            <label className="modal__label">
+            <label className="modal__label" htmlFor="name">
               Name
-              <input
-                type="text"
-                name="name"
-                className="modal__input"
-                placeholder="Name"
-                required
-              />
             </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              className="modal__input"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div className="modal__input-wrapper">
+            <label className="modal__label" htmlFor="imageUrl">
+              Image
+            </label>
+            <input
+              id="imageUrl"
+              type="url"
+              name="imageUrl"
+              className="modal__input"
+              placeholder="Image URL"
+              required
+            />
           </div>
           <div className="modal__input-wrapper">
             <label className="modal__label">
-              Image URL
-              <input
-                type="url"
-                name="imageUrl"
-                className="modal__input"
-                placeholder="Image URL"
-                required
-              />
-            </label>
-          </div>
-          <div className="modal__input-wrapper">
-            <label className="modal__label">
-              Select the weather type:
-              <select name="weather" className="modal__input" required>
-                <option value="">Select weather type</option>
-                <option value="hot">Hot</option>
-                <option value="warm">Warm</option>
-                <option value="cold">Cold</option>
-              </select>
+              <div className="modal__input-wrapper">
+                
+  <p className="modal__weather-title">Select the weather type:</p>
+  <div className="modal__radio-container">
+    <div>
+      <input
+        type="radio"
+        id="hot"
+        value="hot"
+        name="weather"
+        className="modal__radio"
+        required
+      />
+      <label htmlFor="hot">Hot</label>
+    </div>
+    </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="warm"
+                    value="warm"
+                    name="weather"
+                    className="modal__radio"
+                    required
+                  />
+                  <label htmlFor="warm">Warm</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="cold"
+                    value="cold"
+                    name="weather"
+                    className="modal__radio"
+                    required
+                  />
+                  <label htmlFor="cold">Cold</label>
+                </div>
+              </div>
             </label>
           </div>
         </ModalWithForm>
