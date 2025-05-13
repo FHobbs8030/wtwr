@@ -31,9 +31,8 @@
   color: rgba(0, 0, 0, 0.3)
 }
 
-/* Add hover effect for better user experience */
 .modal__close:hover {
-  color: #000; /* Darker on hover */
+  color: #000; 
 }
 
 .modal__title {

@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../blocks/Main.css";
 import "../blocks/ItemCard.css";

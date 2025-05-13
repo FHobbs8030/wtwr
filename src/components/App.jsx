@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
 import "../vendor/normalize.css";
@@ -138,7 +137,7 @@ function App() {
           <div className="modal__input-wrapper">
             <label className="modal__label">
               <div className="modal__input-wrapper">
-                
+
   <p className="modal__weather-title">Select the weather type:</p>
   <div className="modal__radio-container">
     <div>
