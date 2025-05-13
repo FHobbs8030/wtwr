@@ -5,6 +5,7 @@ import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
 import "../blocks/Header.css"; 
 import "./index.css"; 
+import "../blocks/Cards.css";
 
 function Main({ weatherData, clothingItems, onCardClick }) {
   if (!weatherData || !weatherData.main) {
