@@ -39,20 +39,36 @@ OpenWeatherMap API – Supplies current weather data by city name to power outfi
 ## 🎥 Demo Video
 <!-- Add a hosted video link here --> <!-- Example: [Watch the Demo](https://your-video-link.com) -->
 
-🔐 Environment Variables
-To run the app locally, create a .env file in your root directory and include the following variable:
-.env
-Copy
-Edit
-VITE_APP_WEATHER_API_KEY=your_api_key_here
+## 🔐 Environment Variables
 
-📦 Setup Instructions
-Clone the repo and navigate to the project folder
+To run this project, you'll need to add the following environment variables to your .env file:
 
-Create a .env file at the root level
+`REACT_APP_API_KEY` - Your OpenWeatherMap API key
+`REACT_APP_WEATHER_URL` - OpenWeatherMap API base URL
 
-Copy contents from .env.example (if available)
+## 📦 Setup Instructions
 
-Replace the placeholder value with your OpenWeatherMap API key
+1. Clone the repository:
 
-Ensure .env is listed in your .gitignore file to keep your key safe
+```bash
+   git clone https://github.com/your-username/your-repo-name.git
+```
+
+2.Create a .env file at the root level:
+
+```bash
+   touch .env
+
+3. Copy contents from .env.example:
+
+   ```bash
+   cp .env.example .env
+   ...
+
+4. Replace the placeholder value with your OpenWeatherMap API key in the .env file
+
+5. Ensure .env is listed in your .gitignore file to keep your key safe:
+
+   ```bash
+   echo ".env" >> .gitignore
+   ...
