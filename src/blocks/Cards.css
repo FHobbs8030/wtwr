@@ -1,8 +1,35 @@
 .cards {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; 
+}
+
+.cards__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);  
-    justify-content: center;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: 20px;
     padding: 0;
     list-style: none;
-   }
+  }
+
+/* For medium screens */
+@media screen and (max-width: 1200px) {
+  .cards__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For tablet screens */
+@media screen and (max-width: 768px) {
+  .cards__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For mobile screens */
+@media screen and (max-width: 480px) {
+  .cards__list {
+    grid-template-columns: 1fr;
+  }
+}
