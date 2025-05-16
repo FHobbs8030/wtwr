@@ -6,69 +6,60 @@ What to Wear (WTWR) is a sleek, weather-based clothing recommendation app that r
 
 ## ✨ Key Features
 
-🌤️ Real-time weather updates for your city
+* 🌤️ Real-time weather updates for your city
 
-🧥 Smart clothing recommendations based on temperature
+* 🧥 Smart clothing recommendations based on temperature
 
-🃏 Interactive clothing item cards
+* 🃏 Interactive clothing item cards
 
-🔍 Modal popups for detailed item views
+* 🔍 Modal popups for detailed item views
 
-🧭 Clean, responsive UI for an intuitive experience
+* 🧭 Clean, responsive UI for an intuitive experience
 
 ## 🛠️ Technologies Used
 
-💻 Frontend
-React (v18.2.0) – Library for building modern, component-based user interfaces
+## 💻 Frontend
 
-Vite (v6.3.5) – Blazing-fast development server and build tool
+* React (v18.2.0) – Library for building modern, component-based user interfaces
 
-normalize.css (v8.0.1) – CSS reset to ensure visual consistency across browsers
+* Vite (v6.3.5) – Blazing-fast development server and build tool
 
-🧰 Development Tools
-gh-pages (v6.1.1) – Simplifies deployment to GitHub Pages
+* normalize.css (v8.0.1) – CSS reset to ensure visual consistency across browsers
 
-@vitejs/plugin-react (v4.1.0) – Enables React Fast Refresh and JSX support for Vite
+## 🧰 Development Tools
 
-🌐 APIs
-OpenWeatherMap API – Supplies current weather data by city name to power outfit suggestions
+* gh-pages (v6.1.1) – Simplifies deployment to GitHub Pages
+
+* @vitejs/plugin-react (v4.1.0) – Enables React Fast Refresh and JSX support for Vite
+
+* 🌐 APIs
+
+   OpenWeatherMap API – Supplies current weather data by city name to power outfit suggestions
 
 ## 📸 Screenshots
+
 <!-- Add screenshots of your UI here --> <!-- Example: ![WTWR Dashboard Screenshot](./images/screenshot1.png) -->
 
 ## 🎥 Demo Video
+
 <!-- Add a hosted video link here --> <!-- Example: [Watch the Demo](https://your-video-link.com) -->
 
 ## 🔐 Environment Variables
 
-To run this project, you'll need to add the following environment variables to your .env file:
+To run the app locally, you’ll need to create a .env file in your root directory with the following variable:
 
-`REACT_APP_API_KEY` - Your OpenWeatherMap API key
-`REACT_APP_WEATHER_URL` - OpenWeatherMap API base URL
+VITE_APP_WEATHER_API_KEY=your_api_key_here
 
 ## 📦 Setup Instructions
 
-1. Clone the repository:
+To get started with the project locally:
 
-```bash
-   git clone https://github.com/your-username/your-repo-name.git
-```
+* Clone the repo and navigate to the project folder
 
-2.Create a .env file at the root level:
+* Create a .env file at the root level
 
-```bash
-   touch .env
+* Copy contents from .env.example (if available)
 
-3. Copy contents from .env.example:
+* Replace the placeholder value with your OpenWeatherMap API key
 
-   ```bash
-   cp .env.example .env
-   ...
-
-4. Replace the placeholder value with your OpenWeatherMap API key in the .env file
-
-5. Ensure .env is listed in your .gitignore file to keep your key safe:
-
-   ```bash
-   echo ".env" >> .gitignore
-   ...
+* Ensure .env is listed in your .gitignore file to keep your key safe
