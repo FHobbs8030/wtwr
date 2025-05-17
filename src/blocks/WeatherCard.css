@@ -7,9 +7,8 @@
   background-repeat: no-repeat;
   height: 80px;
   width: 100%;
-  max-width: 1280px;
-  margin: 1.75rem auto;
-  padding: 0 1.25rem;
+  max-width: 1200px;
+  padding: 0 40px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 36px;
@@ -18,4 +17,22 @@
   border-radius: 10px;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+@media screen and (max-width: 1029px) {
+  .weather-card {
+    width: 90%;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .weather-card {
+    width: 85%;
+    font-size: 24px;
+    line-height: 28px;
+    height: 60px;
+    padding: 10px 15px;
+  }
 }

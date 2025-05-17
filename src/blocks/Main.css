@@ -1,10 +1,11 @@
 .main {
-  padding: 1.25rem;
+  padding: 0;
 }
 
 .main__intro {
   font-size: 16px;
-  margin: 16px 5px;
+  margin: 40px 0px 18px 40px;
+  padding: 0;
   text-align: left;
 }
 
