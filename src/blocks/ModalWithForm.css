@@ -50,6 +50,17 @@
   gap: 12px;
 }
 
+.modal__input--error {
+  border-bottom: 2px solid red;
+}
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
 .modal__radio-container {
   display: flex;
   gap: 20px;
@@ -106,4 +117,14 @@
 .modal__weather-title {
   width: 173px;
   margin: 0 0 12px 0; 
+}
+
+@media screen and (max-width: 500px) {
+  .modal__input-wrapper {
+    width: 100%;
+  }
+
+  .modal__input {
+    width: 100%;
+  }
 }

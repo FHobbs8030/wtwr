@@ -1,3 +1,4 @@
+// App.jsx
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
 import "../vendor/normalize.css";
@@ -13,9 +14,13 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleAddClick = () => setIsAddModalOpen(true);
-  const handleCloseModal = () => setIsAddModalOpen(false);
+  const handleCloseModal = () => {
+    setIsAddModalOpen(false);
+    setFormErrors({});
+  };
 
   const handleCardClick = (item) => {
     setSelectedItem(item);
@@ -25,34 +30,28 @@ function App() {
     setSelectedItem(null);
   };
 
-  const validateForm = (name, imageUrl, weather) => {
-    if (name.length < 2 || name.length > 30) {
-      return "Name must be between 2 and 30 characters";
-    }
-    try {
-      new URL(imageUrl);
-    } catch (e) {
-      return "Please enter a valid URL";
-    }
-    const validWeatherTypes = ["hot", "warm", "cold"];
-    if (!validWeatherTypes.includes(weather)) {
-      return "Please select a valid weather type";
-    }
-    return null;
-  };
-
   const handleAddGarmentSubmit = (e) => {
     e.preventDefault();
     const { name, imageUrl, weather } = e.target.elements;
 
-    const validationError = validateForm(
-      name.value,
-      imageUrl.value,
-      weather.value
-    );
+    const newErrors = {};
 
-    if (validationError) {
-      alert(validationError);
+    if (name.value.length < 2 || name.value.length > 30) {
+      newErrors.name = "Name must be between 2 and 30 characters";
+    }
+
+    const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+    if (!urlPattern.test(imageUrl.value)) {
+      newErrors.imageUrl = "Please enter a valid URL";
+    }
+
+    const validWeatherTypes = ["hot", "warm", "cold"];
+    if (!validWeatherTypes.includes(weather.value)) {
+      newErrors.weather = "Please select a valid weather type";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setFormErrors(newErrors);
       return;
     }
 
@@ -107,79 +106,8 @@ function App() {
           buttonText="Add garment"
           onClose={handleCloseModal}
           onSubmit={handleAddGarmentSubmit}
-        >
-          <div className="modal__input-wrapper">
-            <label className="modal__label" htmlFor="name">
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              className="modal__input"
-              placeholder="Name"
-              required
-            />
-          </div>
-          <div className="modal__input-wrapper">
-            <label className="modal__label" htmlFor="imageUrl">
-              Image
-            </label>
-            <input
-              id="imageUrl"
-              type="url"
-              name="imageUrl"
-              className="modal__input"
-              placeholder="Image URL"
-              required
-            />
-          </div>
-          <div className="modal__input-wrapper">
-            <label className="modal__label">
-              <div className="modal__input-wrapper">
-
-  <p className="modal__weather-title">Select the weather type:</p>
-  <div className="modal__radio-container">
-    <div>
-      <input
-        type="radio"
-        id="hot"
-        value="hot"
-        name="weather"
-        className="modal__radio"
-        required
-      />
-      <label htmlFor="hot">Hot</label>
-    </div>
-    </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    id="warm"
-                    value="warm"
-                    name="weather"
-                    className="modal__radio"
-                    required
-                  />
-                  <label htmlFor="warm">Warm</label>
-                </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    id="cold"
-                    value="cold"
-                    name="weather"
-                    className="modal__radio"
-                    required
-                  />
-                  <label htmlFor="cold">Cold</label>
-                </div>
-              </div>
-            </label>
-          </div>
-        </ModalWithForm>
+          formErrors={formErrors}
+        />
       )}
     </div>
   );
