@@ -1,11 +1,13 @@
 .main {
-  padding: 0;
+  width: calc(100% - 80px); /* Creates 40px space on each side */
+  max-width: 1200px; /* Same as header and weather card */
+  margin: 0 auto; /* Centers the content */
 }
 
 .main__intro {
   font-size: 16px;
-  margin: 40px 0px 18px 40px;
-  padding: 0;
+  margin: 0;
+  padding-bottom: 20px;
   text-align: left;
 }
 
@@ -26,4 +28,23 @@
   gap: 20px;
   padding: 0;
   margin-top: 1.25rem;
+}
+
+@media screen and (max-width: 600px) {
+  .main__intro {
+    margin: 0 0 0 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    width: calc(100% - 40px);
+    margin: 0 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main__intro {
+    margin: 0 0 0 20px;
+  }
 }

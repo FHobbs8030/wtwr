@@ -46,6 +46,7 @@ function ModalWithForm({
               id="name"
               type="text"
               name="name"
+              autocomplete="name"
               className={`modal__input ${
                 formErrors.name ? "modal__input--error" : ""
               }`}
@@ -64,6 +65,7 @@ function ModalWithForm({
               id="imageUrl"
               type="url"
               name="imageUrl"
+              autocomplete="url"
               className={`modal__input ${
                 formErrors.imageUrl ? "modal__input--error" : ""
               }`}

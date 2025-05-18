@@ -6,9 +6,8 @@
   background-position: right center;
   background-repeat: no-repeat;
   height: 80px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 40px;
+  max-width: 1200px; 
+  margin: 20px auto; 
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 36px;
@@ -19,9 +18,13 @@
   overflow: hidden;
 }
 
+.weather-card__temp {
+  margin: 0 0 0 16px;
+}
+
 @media screen and (max-width: 1029px) {
   .weather-card {
-    width: 90%;
+    width: 100%;
     margin: 20px auto;
     padding: 0 20px;
   }
@@ -34,5 +37,11 @@
     line-height: 28px;
     height: 60px;
     padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .weather-card {
+      width: calc(100% - 40px);  
   }
 }
