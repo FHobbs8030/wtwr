@@ -1,4 +1,3 @@
-// ModalWithForm.jsx
 import React, { useEffect } from "react";
 import "../blocks/ModalWithForm.css";
 
@@ -10,8 +9,6 @@ function ModalWithForm({
   onSubmit,
   formErrors = {},
 }) {
-  console.log("Form Errors:", formErrors);
-
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
