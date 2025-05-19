@@ -10,21 +10,15 @@
   padding: 16px;
 }
 
-/* .modal__content {
-  background: #fff;
+.modal__content {
+  background-color: #fff;
   padding: 24px;
   border-radius: 12px;
   width: 100%;
   max-width: 496px;
   position: relative;
   box-sizing: border-box;
-} */
-
-.modal__content {
-  width: calc(100% - 80px);  /* Subtracting 40px from each side */
-  max-width: 496px;
-  margin: 0 auto;
- }
+}
 
 .modal__close {
   position: absolute;
@@ -47,7 +41,7 @@
 
 .modal__title {
   margin: 0 0 24px 0;
-  font-family: Cabinet Grotesk;
+  font-family: 'Cabinet Grotesk', sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -132,9 +126,10 @@
   margin: 0 0 12px 0;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1024px) {
   .modal {
     align-items: flex-start;
+    padding-top: 60px;
   }
 
   .modal__content {
@@ -143,6 +138,7 @@
     margin: 0 auto;
     border-radius: 12px;
     box-sizing: border-box;
+    background-color: #fff;
   }
 
   .modal__input-wrapper,
@@ -172,8 +168,21 @@
   }
 }
 
+@media screen and (min-width: 1025px) {
+  .modal__content {
+    width: 80%;
+    max-width: 496px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #fff;
+  }
 
+  .modal__submit-button {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
 
   .modal__title {
     font-size: 20px;
   }
+}
