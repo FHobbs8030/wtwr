@@ -100,13 +100,18 @@ function App() {
       )}
 
       {isAddModalOpen && (
-        <ModalWithForm
-          title="New garment"
-          name="new-garment"
-          buttonText="Add garment"
+        <ItemModal
+          onAddItem={(newGarment) => {
+            setClothingItems([
+              ...clothingItems,
+              {
+                ...newGarment,
+                _id: Date.now(),
+              },
+            ]);
+            handleCloseModal();
+          }}
           onClose={handleCloseModal}
-          onSubmit={handleAddGarmentSubmit}
-          formErrors={formErrors}
         />
       )}
     </div>

@@ -1,5 +1,4 @@
-.header 
-.header__title {
+.header {
   width: calc(100% - 80px); 
   font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
   max-width: 1200px;
