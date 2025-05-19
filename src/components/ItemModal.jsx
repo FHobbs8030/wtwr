@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../blocks/ItemModal.css";
 
+
 function ItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
