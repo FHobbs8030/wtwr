@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../blocks/ItemModal_Scoped.css";
+import "../blocks/ItemModal.css";
 
 function ItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");

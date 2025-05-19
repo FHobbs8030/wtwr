@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../blocks/App.css";
 import "../vendor/normalize.css";
-import Header from "../components/Header.jsx";
-import Main from "../components/Main.jsx";
-import Footer from "../components/Footer.jsx";
-import ItemModal from "../components/ItemModal.jsx";
-import { defaultClothingItems } from "../utils/clothingItems.js";
+import Header from "./Header.jsx";
+import Main from "./Main.jsx";
+import Footer from "./Footer.jsx";
+import ItemModal from "./ItemModal.jsx";
+import ModalWithForm from "./ModalWithForm.jsx";
+import { defaultClothingItems } from "../utils/clothingItems";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -14,7 +15,10 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleAddClick = () => setIsAddModalOpen(true);
+  const handleAddClick = () => {
+    setIsAddModalOpen(true);
+  };
+
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
     setFormErrors({});
@@ -28,14 +32,38 @@ function App() {
     setSelectedItem(null);
   };
 
-  const handleAddGarmentSubmit = ({ name, imageUrl, weather }) => {
-    const newGarment = {
-      name: name,
-      weather: weather,
-      link: imageUrl,
-      _id: Date.now(),
+  const handleAddGarmentSubmit = (e) => {
+    e.preventDefault();
+    const { name, imageUrl, weather } = e.target.elements;
+
+    const newErrors = {};
+
+    if (name.value.trim().length < 2 || name.value.trim().length > 30) {
+      newErrors.name = "Name must be between 2 and 30 characters";
+    }
+
+    const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+    if (!urlPattern.test(imageUrl.value.trim())) {
+      newErrors.imageUrl = "Please enter a valid URL";
+    }
+
+    if (!weather.value) {
+      newErrors.weather = "Please select a weather type";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setFormErrors(newErrors);
+      return;
+    }
+
+    const newItem = {
+      name: name.value.trim(),
+      weather: weather.value,
+      link: imageUrl.value.trim(),
+      _id: Date.now().toString(),
     };
-    setClothingItems([...clothingItems, newGarment]);
+
+    setClothingItems([newItem, ...clothingItems]);
     handleCloseModal();
   };
 
@@ -46,13 +74,9 @@ function App() {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     )
-      .then((response) => response.json())
-      .then((data) => {
-        setWeatherData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather:", error);
-      });
+      .then((res) => res.json())
+      .then((data) => setWeatherData(data))
+      .catch((err) => console.error("Weather fetch error:", err));
   }, []);
 
   return (
@@ -73,9 +97,13 @@ function App() {
       )}
 
       {isAddModalOpen && (
-        <ItemModal
-          onAddItem={handleAddGarmentSubmit}
+        <ModalWithForm
+          title="New garment"
+          name="new-garment"
+          buttonText="Add garment"
           onClose={handleCloseModal}
+          onSubmit={handleAddGarmentSubmit}
+          formErrors={formErrors}
         />
       )}
     </div>

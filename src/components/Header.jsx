@@ -1,5 +1,5 @@
 import React from "react";
-import "../blocks/header.css";
+import "../blocks/header.css"; // make sure this matches the actual file name
 import Logo from "../images/Logo.svg";
 import Avatar from "../images/Avatar.png";
 
