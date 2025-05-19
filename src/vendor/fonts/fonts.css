@@ -1,7 +1,7 @@
 @font-face {
      font-family: 'Cabinet Grotesk';
-     src: url('../vendor/fonts/CabinetGrotesk-Medium.woff2') format('woff2'),
-          url('../vendor/fonts/CabinetGrotesk-Medium.woff') format('woff');
+     src: url('CabinetGrotesk-Medium.woff2') format('woff2'),
+          url('CabinetGrotesk-Medium.woff') format('woff');
      font-weight: 500;
      font-style: normal;
      font-display: swap;
@@ -9,10 +9,11 @@
    
    @font-face {
      font-family: 'Cabinet Grotesk';
-     src: url('../vendor/fonts/CabinetGrotesk-Bold.woff2') format('woff2'),
-          url('../vendor/fonts/CabinetGrotesk-Bold.woff') format('woff');
+     src: url('CabinetGrotesk-Bold.woff2') format('woff2'),
+          url('CabinetGrotesk-Bold.woff') format('woff');
      font-weight: 700;
      font-style: normal;
      font-display: swap;
    }
+   
      
