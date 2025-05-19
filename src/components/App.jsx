@@ -1,4 +1,3 @@
-// App.jsx
 import { useState, useEffect } from "react";
 import "../blocks/App.css";
 import "../vendor/normalize.css";
@@ -6,7 +5,6 @@ import Header from "../components/Header.jsx";
 import Main from "../components/Main.jsx";
 import Footer from "../components/Footer.jsx";
 import ItemModal from "../components/ItemModal.jsx";
-import ModalWithForm from "../components/ModalWithForm.jsx";
 import { defaultClothingItems } from "../utils/clothingItems.js";
 
 function App() {
@@ -30,38 +28,13 @@ function App() {
     setSelectedItem(null);
   };
 
-  const handleAddGarmentSubmit = (e) => {
-    e.preventDefault();
-    const { name, imageUrl, weather } = e.target.elements;
-
-    const newErrors = {};
-
-    if (name.value.length < 2 || name.value.length > 30) {
-      newErrors.name = "Name must be between 2 and 30 characters";
-    }
-
-    const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
-    if (!urlPattern.test(imageUrl.value)) {
-      newErrors.imageUrl = "Please enter a valid URL";
-    }
-
-    const validWeatherTypes = ["hot", "warm", "cold"];
-    if (!validWeatherTypes.includes(weather.value)) {
-      newErrors.weather = "Please select a valid weather type";
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setFormErrors(newErrors);
-      return;
-    }
-
+  const handleAddGarmentSubmit = ({ name, imageUrl, weather }) => {
     const newGarment = {
-      name: name.value,
-      weather: weather.value,
-      link: imageUrl.value,
+      name: name,
+      weather: weather,
+      link: imageUrl,
       _id: Date.now(),
     };
-
     setClothingItems([...clothingItems, newGarment]);
     handleCloseModal();
   };
@@ -101,16 +74,7 @@ function App() {
 
       {isAddModalOpen && (
         <ItemModal
-          onAddItem={(newGarment) => {
-            setClothingItems([
-              ...clothingItems,
-              {
-                ...newGarment,
-                _id: Date.now(),
-              },
-            ]);
-            handleCloseModal();
-          }}
+          onAddItem={handleAddGarmentSubmit}
           onClose={handleCloseModal}
         />
       )}

@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from "react";
+import "../blocks/ItemModal_Scoped.css";
 
 function ItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");
@@ -21,30 +21,30 @@ function ItemModal({ onAddItem, onClose }) {
   }
 
   return (
-    <div className="modal">
-      <div className="modal__content">
-        <button className="modal__close" onClick={onClose}>×</button>
-        <h3 className="modal__title">New garment</h3>
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <label className="modal__label">Name</label>
+    <div className="item-modal">
+      <div className="item-modal__content">
+        <button className="item-modal__close" onClick={onClose}>×</button>
+        <h3 className="item-modal__title">New garment</h3>
+        <form className="item-modal__form" onSubmit={handleSubmit}>
+          <label className="item-modal__label">Name</label>
           <input
             type="text"
-            className="modal__input"
+            className="item-modal__input"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <label className="modal__label">Image URL</label>
+          <label className="item-modal__label">Image URL</label>
           <input
             type="url"
-            className="modal__input"
+            className="item-modal__input"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
           />
-          <fieldset className="modal__fieldset">
-            <legend className="modal__label">Select the weather type:</legend>
-            <div className="modal__radio-group">
+          <fieldset className="item-modal__fieldset">
+            <legend className="item-modal__label">Select the weather type:</legend>
+            <div className="item-modal__radio-group">
               <label><input type="radio" name="weather" value="hot" onChange={(e) => setWeather(e.target.value)} /> Hot</label>
               <label><input type="radio" name="weather" value="warm" onChange={(e) => setWeather(e.target.value)} /> Warm</label>
               <label><input type="radio" name="weather" value="cold" onChange={(e) => setWeather(e.target.value)} /> Cold</label>
@@ -52,7 +52,7 @@ function ItemModal({ onAddItem, onClose }) {
           </fieldset>
           <button
             type="submit"
-            className="modal__submit-button"
+            className="item-modal__submit-button"
             disabled={!isFormValid}
           >
             Add garment
