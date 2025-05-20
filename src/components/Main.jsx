@@ -3,6 +3,7 @@ import "../blocks/ItemCard.css";
 import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
 import "../blocks/Cards.css";
+import "../blocks/Main.css";
 
 function Main({ weatherData, clothingItems, onCardClick }) {
   if (!weatherData || !weatherData.main) {

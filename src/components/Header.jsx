@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../images/Logo.svg";
 import Avatar from "../images/Avatar.png";
+import "../blocks/Header.css";
 
 function Header({ onAddClick }) {
   const currentDate = new Date().toLocaleString("default", {

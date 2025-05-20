@@ -6,6 +6,7 @@ import ItemModal from "./ItemModal.jsx";
 import ModalWithForm from "./ModalWithForm.jsx";
 import { defaultClothingItems } from "../utils/clothingItems";
 import { weatherApiKey } from "../utils/constants";
+import "../blocks/App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);

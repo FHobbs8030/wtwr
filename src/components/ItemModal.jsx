@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import useEscapeKey from "../hooks/useEscapeKey";
+import "../blocks/ItemModal.css";
 
 function ItemModal({ item, onClose }) {
   useEscapeKey(onClose);

@@ -1,6 +1,6 @@
 import React from "react";
-import "../blocks/WeatherCard.css";
 import { getBackgroundImage } from "../utils/weatherApi";
+import "../blocks/WeatherCard.css";
 
 function WeatherCard({ weatherData }) {
   if (!weatherData || !weatherData.weather || !weatherData.sys) return null;

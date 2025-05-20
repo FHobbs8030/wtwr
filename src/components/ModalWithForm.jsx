@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useEscapeKey from "../hooks/useEscapeKey";
+import "../blocks/ModalWithForm.css";
 
 function ModalWithForm({
   title,
