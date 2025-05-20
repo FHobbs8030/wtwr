@@ -2,7 +2,6 @@ import React from "react";
 import "../blocks/ItemCard.css";
 import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
-import "../blocks/index.css";
 import "../blocks/Cards.css";
 
 function Main({ weatherData, clothingItems, onCardClick }) {

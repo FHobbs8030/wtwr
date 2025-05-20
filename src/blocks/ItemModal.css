@@ -34,10 +34,13 @@
 }
 
 .item-modal__caption {
-  font-size: 16px;
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: left;
   margin: 0;
-  text-align: center;
-  color: #000000;
+  padding: 0;
 }
 
 .item-modal__close {
@@ -127,16 +130,6 @@
   cursor: not-allowed;
 }
 
-.item-modal__caption {
-  font-family: 'Cabinet Grotesk';
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: left;
-  margin: 0;
-  padding-left: 32px;
-}
-
 .item-modal__weather {
   font-family: 'Cabinet Grotesk';
   font-weight: 700;
@@ -144,5 +137,5 @@
   line-height: 24px;
   text-align: left;
   margin: 0;
-  padding-left: 32px;
+  padding: 0;
 }
