@@ -1,9 +1,7 @@
 import React from "react";
-import "../blocks/Main.css";
 import "../blocks/ItemCard.css";
 import ItemCard from "./ItemCard";
 import WeatherCard from "./WeatherCard";
-import "../blocks/Header.css";
 import "../blocks/index.css";
 import "../blocks/Cards.css";
 

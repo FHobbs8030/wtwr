@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../blocks/ModalWithForm.css";
+import useEscapeKey from "../hooks/useEscapeKey";
 
 function ModalWithForm({
   title,
@@ -16,20 +16,13 @@ function ModalWithForm({
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Update validity
   useEffect(() => {
     const { name, imageUrl, weather } = formState;
     setIsFormValid(name.trim() && imageUrl.trim() && weather);
   }, [formState]);
 
-  // Close on Escape
-  useEffect(() => {
-    const handleEsc = (e) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", handleEsc);
-    return () => document.removeEventListener("keydown", handleEsc);
-  }, [onClose]);
+  useEscapeKey(onClose);
 
-  // Close on overlay click
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains("modal")) onClose();
   };

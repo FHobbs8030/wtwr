@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../blocks/App.css";
-import "../vendor/normalize.css";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 import ItemModal from "./ItemModal.jsx";
 import ModalWithForm from "./ModalWithForm.jsx";
 import { defaultClothingItems } from "../utils/clothingItems";
+import { weatherApiKey } from "../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -26,10 +25,11 @@ function App() {
 
   const handleCardClick = (item) => {
     setSelectedItem(item);
+    setIsItemModalOpen(true);
   };
 
   const handleCloseItemModal = () => {
-    setSelectedItem(null);
+    setIsItemModalOpen(false);
   };
 
   const handleAddGarmentSubmit = (e) => {
@@ -55,24 +55,25 @@ function App() {
       setFormErrors(newErrors);
       return;
     }
-    
+
     const newItem = {
       name: name.value.trim(),
       weather: weather.value,
-      imageUrl: imageUrl.value.trim(), 
+      imageUrl: imageUrl.value.trim(),
       _id: Date.now().toString(),
     };
-    
+
     setClothingItems([newItem, ...clothingItems]);
     handleCloseModal();
   };
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_APP_WEATHER_API_KEY;
-    const city = "Carson City";
+    const apiKey = weatherApiKey;
+    const latitude = 39.1638;
+    const longitude = -119.7674;
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data))
@@ -91,11 +92,10 @@ function App() {
         />
         <Footer />
       </div>
-
+      const [isItemModalOpen, setIsItemModalOpen] = useState(false);
       {selectedItem && (
         <ItemModal item={selectedItem} onClose={handleCloseItemModal} />
       )}
-
       {isAddModalOpen && (
         <ModalWithForm
           title="New garment"

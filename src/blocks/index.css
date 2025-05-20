@@ -1,9 +1,15 @@
-@import url('../vendor/fonts/fonts.css');
-
+@import "./blocks/App.css";
+@import "./blocks/Header.css";
+@import "./blocks/Main.css";
+@import "./blocks/Footer.css";
+@import "./blocks/ItemModal.css";
+@import "./blocks/ModalWithForm.css";
+@import "./vendor/normalize.css";
+@import url("../vendor/fonts/fonts.css");
 
 html,
 body {
-  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+  font-family: "Cabinet Grotesk", "Inter", sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
