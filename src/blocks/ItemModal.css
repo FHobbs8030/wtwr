@@ -1,25 +1,27 @@
 .item-modal {
   position: fixed;
   inset: 0;
+  min-height: 100vh; 
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 16px;
+  padding: 20px;
   overflow-y: auto;
 }
 
 .item-modal__content {
   background: white;
-  padding: 24px;
+  padding: 32px;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
+  max-height: 90vh; 
   position: relative;
-  top: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  overflow-y: auto;
+  margin: auto;
   margin-top: 0;
   margin-bottom: 40px;
 }
@@ -40,8 +42,8 @@
 
 .item-modal__close {
   position: absolute;
-  top: 8px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   background: transparent;
   border: none;
   width: 24px;
@@ -49,7 +51,7 @@
   font-size: 28px;
   line-height: 24px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
   z-index: 10;
 }
 
