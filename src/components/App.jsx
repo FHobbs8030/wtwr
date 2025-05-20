@@ -13,23 +13,22 @@ function App() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-
+  const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const handleAddClick = () => {
     setIsAddModalOpen(true);
   };
 
+  // Replace both functions with a single one
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
-    setFormErrors({});
+    setIsItemModalOpen(false);
+    setSelectedItem(null);
+    setFormErrors({}); // Reset form errors when closing
   };
 
   const handleCardClick = (item) => {
     setSelectedItem(item);
     setIsItemModalOpen(true);
-  };
-
-  const handleCloseItemModal = () => {
-    setIsItemModalOpen(false);
   };
 
   const handleAddGarmentSubmit = (e) => {
@@ -92,9 +91,9 @@ function App() {
         />
         <Footer />
       </div>
-      const [isItemModalOpen, setIsItemModalOpen] = useState(false);
-      {selectedItem && (
-        <ItemModal item={selectedItem} onClose={handleCloseItemModal} />
+
+      {selectedItem && isItemModalOpen && (
+        <ItemModal item={selectedItem} onClose={handleCloseModal} />
       )}
       {isAddModalOpen && (
         <ModalWithForm

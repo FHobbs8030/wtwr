@@ -5,6 +5,7 @@ function ItemModal({ item, onClose }) {
   useEscapeKey(onClose);
 
   const handleOverlayClick = (e) => {
+    console.log("Overlay clicked");
     if (e.target.classList.contains("item-modal")) {
       onClose();
     }

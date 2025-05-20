@@ -1,10 +1,10 @@
-@import "./blocks/App.css";
-@import "./blocks/Header.css";
-@import "./blocks/Main.css";
-@import "./blocks/Footer.css";
-@import "./blocks/ItemModal.css";
-@import "./blocks/ModalWithForm.css";
-@import "./vendor/normalize.css";
+@import "../blocks/App.css"; 
+@import "../blocks/Header.css";
+@import "../blocks/Footer.css";
+@import "../blocks/Main.css";
+@import "../blocks/ItemModal.css";
+@import "../blocks/ModalWithForm.css";
+@import "../vendor/normalize.css";
 @import url("../vendor/fonts/fonts.css");
 
 html,
