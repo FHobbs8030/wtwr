@@ -37,11 +37,11 @@ What to Wear (WTWR) is a sleek, weather-based clothing recommendation app that r
    OpenWeatherMap API – Supplies current weather data by city name to power outfit suggestions
 
 ## 📸 Images
-![Images](./images/wtwr1.png)
-![Images](./images/wtwr2.png)
-![Images](./images/wtwr3.png)
-![Images](./images/wtwr4.png)
-![Images](./images/wtwr5.png)
+![Images](../images/wtwr1.png)
+![Images](../images/wtwr2.png)
+![Images](../images/wtwr3.png)
+![Images](../images/wtwr4.png)
+![Images](../images/wtwr5.png)
 <!-- Add screenshots of your UI here --> <!-- Example: ![WTWR Dashboard Screenshot](./images/screenshot1.png) -->
 
 ## 🎥 Demo Video
