@@ -55,14 +55,14 @@ function App() {
       setFormErrors(newErrors);
       return;
     }
-
+    
     const newItem = {
       name: name.value.trim(),
       weather: weather.value,
-      link: imageUrl.value.trim(),
+      imageUrl: imageUrl.value.trim(), 
       _id: Date.now().toString(),
     };
-
+    
     setClothingItems([newItem, ...clothingItems]);
     handleCloseModal();
   };
