@@ -82,7 +82,6 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app__title">Sprint 10: WTWR</h1>
       <div className="app__content">
         <Header onAddClick={handleAddClick} />
         <Main
