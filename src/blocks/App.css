@@ -1,7 +1,6 @@
 @import url('../vendor/fonts/fonts.css');
 
 .app {
-  background-color: #5a6e8c; 
   min-height: 100vh;
   font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
   margin: 0;
