@@ -1,5 +1,5 @@
 import React from "react";
-import { getBackgroundImage } from "../utils/weatherApi";
+import { getBackgroundImage } from "../utils/weatherImages";
 import "../blocks/WeatherCard.css";
 
 function WeatherCard({ weatherData }) {

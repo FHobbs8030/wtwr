@@ -5,8 +5,9 @@ import Footer from "./Footer.jsx";
 import ItemModal from "./ItemModal.jsx";
 import ModalWithForm from "./ModalWithForm.jsx";
 import { defaultClothingItems } from "../utils/clothingItems";
-import { weatherApiKey } from "../utils/constants";
 import "../blocks/App.css";
+import { fetchWeatherByCoords } from "../utils/weatherApi";
+import { getBackgroundImage } from "../utils/weatherImages";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -19,12 +20,11 @@ function App() {
     setIsAddModalOpen(true);
   };
 
-  // Replace both functions with a single one
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
     setIsItemModalOpen(false);
     setSelectedItem(null);
-    setFormErrors({}); // Reset form errors when closing
+    setFormErrors({});
   };
 
   const handleCardClick = (item) => {
@@ -68,14 +68,10 @@ function App() {
   };
 
   useEffect(() => {
-    const apiKey = weatherApiKey;
     const latitude = 39.1638;
     const longitude = -119.7674;
 
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-    )
-      .then((res) => res.json())
+    fetchWeatherByCoords(latitude, longitude)
       .then((data) => setWeatherData(data))
       .catch((err) => console.error("Weather fetch error:", err));
   }, []);
