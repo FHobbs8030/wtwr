@@ -1,22 +1,16 @@
 .header {
-  width: calc(100% - 80px); 
-  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;  
-  padding-top: 32px;
-  padding-bottom: 20px;
+  width: calc(100% - 80px);
+  max-width: 1440px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 32px 0 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
+  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
 }
 
-.header__left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
+.header__left,
 .header__right {
   display: flex;
   align-items: center;
@@ -25,7 +19,6 @@
 
 .header__logo {
   height: 40px;
-  margin: 0 0 8px 0;
 }
 
 .header__date-location {
