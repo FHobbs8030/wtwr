@@ -1,10 +1,13 @@
-import React from "react";
-import "../blocks/Footer.css";
+import React from 'react';
+import '../blocks/Footer.css';
 
 function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__text">© 2025 WTWR. All rights reserved.</p>
+      <div className="footer__container">
+        <p className="footer__left">Developed by Fred Hobbs</p>
+        <p className="footer__right">2025</p>
+      </div>
     </footer>
   );
 }

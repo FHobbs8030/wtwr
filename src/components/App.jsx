@@ -16,6 +16,7 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+
   const handleAddClick = () => {
     setIsAddModalOpen(true);
   };
@@ -77,30 +78,32 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <div className="app__content">
-        <Header onAddClick={handleAddClick} />
-        <Main
-          weatherData={weatherData}
-          clothingItems={clothingItems}
-          onCardClick={handleCardClick}
-        />
-        <Footer />
-      </div>
+    <div className="page">
+      <div className="app">
+        <div className="app__content">
+          <Header onAddClick={handleAddClick} />
+          <Main
+            weatherData={weatherData}
+            clothingItems={clothingItems}
+            onCardClick={handleCardClick}
+          />
+          <Footer />
+        </div>
 
-      {selectedItem && isItemModalOpen && (
-        <ItemModal item={selectedItem} onClose={handleCloseModal} />
-      )}
-      {isAddModalOpen && (
-        <ModalWithForm
-          title="New garment"
-          name="new-garment"
-          buttonText="Add garment"
-          onClose={handleCloseModal}
-          onSubmit={handleAddGarmentSubmit}
-          formErrors={formErrors}
-        />
-      )}
+        {selectedItem && isItemModalOpen && (
+          <ItemModal item={selectedItem} onClose={handleCloseModal} />
+        )}
+        {isAddModalOpen && (
+          <ModalWithForm
+            title="New garment"
+            name="new-garment"
+            buttonText="Add garment"
+            onClose={handleCloseModal}
+            onSubmit={handleAddGarmentSubmit}
+            formErrors={formErrors}
+          />
+        )}
+      </div>
     </div>
   );
 }

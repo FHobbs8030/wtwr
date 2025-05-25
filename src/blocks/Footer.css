@@ -1,12 +1,23 @@
 .footer {
-  display: flex;
-  align-items: left;
-  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  background-color: #fff;
+  padding: 171px 0 24px 0; 
   font-size: 16px;
   font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
   font-weight: 500;
   line-height: 20px;
-  background-color: #fff;
   color: #000;
-  margin-top: auto;
+}
+
+.footer__container {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 0 32px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__left,
+.footer__right {
+  margin: 0;
 }
