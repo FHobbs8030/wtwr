@@ -1,24 +1,25 @@
 @import url('../vendor/fonts/fonts.css');
 
+.page {
+  width: 100%;  
+  min-height: 100vh; 
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .app {
   min-height: 100vh;
   font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
   margin: 0;
   padding: 0;
+  width: 100%;  
 }
 
 .app__content {
   background-color: white;
   max-width: 1280px;
+  width: 100%;  /* Add this */
   margin: 0 auto;
-   padding-top: 32px;
-  box-sizing: border-box;
-}
-
-.page {
-  width: 1440px;
-  height: 822px;
-  margin: 0 auto;
-  overflow: hidden;
+  padding: 32px 20px 0;  /* Add horizontal padding */
   box-sizing: border-box;
 }

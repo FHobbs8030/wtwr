@@ -1,7 +1,7 @@
 .header {
   width: calc(100% - 80px);
   max-width: 1440px;
-  height: 40px;
+  min-height: 40px; 
   margin: 0 auto;
   padding: 32px 0 20px 0;
   display: flex;
@@ -67,18 +67,24 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 1rem auto 1.5rem;
-    padding: 0 1rem;
+    margin: 0 auto 1rem; 
+    padding: 1rem;
+    height: auto; 
+    width: calc(100% - 40px); 
   }
 
-  .header__left,
-  .header__right {
+  .headerleft,
+  .headerright {
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem; 
+    width: 100%; 
+    margin-bottom: 1rem; 
   }
 
   .header__date-location {
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0; 
+    width: 100%; 
+    text-align: center;
   }
 }
