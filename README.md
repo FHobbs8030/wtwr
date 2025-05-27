@@ -44,6 +44,14 @@ What to Wear (WTWR) is a sleek, weather-based clothing recommendation app that r
 ![Images](./src/images/wtwr5.png)
 <!-- Add screenshots of your UI here --> <!-- Example: ![WTWR Dashboard Screenshot](./images/screenshot1.png) -->
 
+
+
+## Take a Look at the Project
+
+click [here](https://FHobbs8030.github.io/se_project_react/index.html)
+
+
+
 ## 🎥 Demo Video
 
 <!-- Add a hosted video link here --> <!-- Example: [Watch the Demo](https://your-video-link.com) -->
