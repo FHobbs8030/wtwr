@@ -36,6 +36,7 @@ function App() {
     setIsItemModalOpen(false);
     setSelectedItem(null);
     setFormErrors({});
+    setFormValues({ name: "", imageUrl: "", weather: "" });
   };
 
   const handleCardClick = (item) => {
@@ -43,21 +44,29 @@ function App() {
     setIsItemModalOpen(true);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
   const handleAddGarmentSubmit = (e) => {
     e.preventDefault();
-    const { name, imageUrl, weather } = e.target.elements;
+    const { name, imageUrl, weather } = formValues;
 
     const newErrors = {};
-    if (name.value.trim().length < 2 || name.value.trim().length > 30) {
+    if (name.trim().length < 2 || name.trim().length > 30) {
       newErrors.name = "Name must be between 2 and 30 characters";
     }
 
     const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
-    if (!urlPattern.test(imageUrl.value.trim())) {
+    if (!urlPattern.test(imageUrl.trim())) {
       newErrors.imageUrl = "Please enter a valid URL";
     }
 
-    if (!weather.value) {
+    if (!weather) {
       newErrors.weather = "Please select a weather type";
     }
 
@@ -67,9 +76,9 @@ function App() {
     }
 
     const newItem = {
-      name: name.value.trim(),
-      weather: weather.value,
-      imageUrl: imageUrl.value.trim(),
+      name: name.trim(),
+      weather,
+      imageUrl: imageUrl.trim(),
       _id: Date.now().toString(),
     };
 
@@ -105,6 +114,7 @@ function App() {
         {selectedItem && isItemModalOpen && (
           <ItemModal item={selectedItem} onClose={handleCloseModal} />
         )}
+
         {isAddModalOpen && (
           <ModalWithForm
             title="New garment"
@@ -113,7 +123,58 @@ function App() {
             onClose={handleCloseModal}
             onSubmit={handleAddGarmentSubmit}
             formErrors={formErrors}
-          />
+          >
+            <label className="modal__label">
+              Name
+              <input
+                type="text"
+                name="name"
+                value={formValues.name}
+                onChange={handleInputChange}
+                className="modal__input"
+                placeholder="Name"
+                required
+              />
+              {formErrors?.name && (
+                <span className="modal__error">{formErrors.name}</span>
+              )}
+            </label>
+
+            <label className="modal__label">
+              Image URL
+              <input
+                type="url"
+                name="imageUrl"
+                value={formValues.imageUrl}
+                onChange={handleInputChange}
+                className="modal__input"
+                placeholder="Image URL"
+                required
+              />
+              {formErrors?.imageUrl && (
+                <span className="modal__error">{formErrors.imageUrl}</span>
+              )}
+            </label>
+
+            <label className="modal__label">
+              Select weather type
+              <select
+                name="weather"
+                value={formValues.weather}
+                onChange={handleInputChange}
+                className="modal__input"
+                required
+              >
+                <option value="">Select weather type</option>
+                <option value="hot">Hot</option>
+                <option value="warm">Warm</option>
+                <option value="cold">Cold</option>
+              </select>
+              {formErrors?.weather && (
+                <span className="modal__error">{formErrors.weather}</span>
+              )}
+            </label>
+          </ModalWithForm>
         )}
       </div>
     </div>
