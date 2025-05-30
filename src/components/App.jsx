@@ -12,13 +12,10 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [formValues, setFormValues] = useState({
-    name: '',
-    imageUrl: '',
-    weather: '',
-  });
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [formValues, setFormValues] = useState({ name: '', imageUrl: '', weather: '' });
   const [formErrors, setFormErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
 
   const fallbackWeatherData = {
@@ -37,48 +34,45 @@ function App() {
     setSelectedItem(null);
     setFormErrors({});
     setFormValues({ name: '', imageUrl: '', weather: '' });
+    setIsFormValid(false);
   };
 
-  const handleCardClick = item => {
+  const handleCardClick = (item) => {
     setSelectedItem(item);
     setIsItemModalOpen(true);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues(prevValues => ({
-      ...prevValues,
-      [name]: value,
-    }));
-  };
-
-  const handleAddGarmentSubmit = e => {
-    e.preventDefault();
-    const { name, imageUrl, weather } = formValues;
+    const updatedValues = { ...formValues, [name]: value };
+    setFormValues(updatedValues);
 
     const newErrors = {};
-    if (name.trim().length < 2 || name.trim().length > 30) {
+    if (updatedValues.name.trim().length < 2 || updatedValues.name.trim().length > 30) {
       newErrors.name = 'Name must be between 2 and 30 characters';
     }
 
     const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
-    if (!urlPattern.test(imageUrl.trim())) {
+    if (!urlPattern.test(updatedValues.imageUrl.trim())) {
       newErrors.imageUrl = 'Please enter a valid URL';
     }
 
-    if (!weather) {
+    if (!updatedValues.weather) {
       newErrors.weather = 'Please select a weather type';
     }
 
-    if (Object.keys(newErrors).length > 0) {
-      setFormErrors(newErrors);
-      return;
-    }
+    setFormErrors(newErrors);
+    setIsFormValid(Object.keys(newErrors).length === 0);
+  };
+
+  const handleAddGarmentSubmit = (e) => {
+    e.preventDefault();
+    if (!isFormValid) return;
 
     const newItem = {
-      name: name.trim(),
-      weather,
-      imageUrl: imageUrl.trim(),
+      name: formValues.name.trim(),
+      weather: formValues.weather,
+      imageUrl: formValues.imageUrl.trim(),
       _id: Date.now().toString(),
     };
 
@@ -122,6 +116,8 @@ function App() {
             buttonText="Add garment"
             onClose={handleCloseModal}
             onSubmit={handleAddGarmentSubmit}
+            isOpen={isAddModalOpen}
+            isSubmitDisabled={!isFormValid}
             formErrors={formErrors}
           >
             <label className="modal__label">
@@ -135,9 +131,7 @@ function App() {
                 placeholder="Name"
                 required
               />
-              {formErrors?.name && (
-                <span className="modal__error">{formErrors.name}</span>
-              )}
+              {formErrors?.name && <span className="modal__error">{formErrors.name}</span>}
             </label>
 
             <label className="modal__label">
@@ -158,42 +152,20 @@ function App() {
 
             <fieldset className="modal__fieldset">
               <legend className="modal__label">Select weather type</legend>
-              <label className="modal__radio-label">
-                <input
-                  type="radio"
-                  name="weather"
-                  value="hot"
-                  checked={formValues.weather === 'hot'}
-                  onChange={handleInputChange}
-                  className="modal__radio"
-                />
-                Hot
-              </label>
-              <label className="modal__radio-label">
-                <input
-                  type="radio"
-                  name="weather"
-                  value="warm"
-                  checked={formValues.weather === 'warm'}
-                  onChange={handleInputChange}
-                  className="modal__radio"
-                />
-                Warm
-              </label>
-              <label className="modal__radio-label">
-                <input
-                  type="radio"
-                  name="weather"
-                  value="cold"
-                  checked={formValues.weather === 'cold'}
-                  onChange={handleInputChange}
-                  className="modal__radio"
-                />
-                Cold
-              </label>
-              {formErrors?.weather && (
-                <span className="modal__error">{formErrors.weather}</span>
-              )}
+              {['hot', 'warm', 'cold'].map((weatherType) => (
+                <label key={weatherType} className="modal__radio-label">
+                  <input
+                    type="radio"
+                    name="weather"
+                    value={weatherType}
+                    checked={formValues.weather === weatherType}
+                    onChange={handleInputChange}
+                    className="modal__radio"
+                  />
+                  {weatherType.charAt(0).toUpperCase() + weatherType.slice(1)}
+                </label>
+              ))}
+              {formErrors?.weather && <span className="modal__error">{formErrors.weather}</span>}
             </fieldset>
           </ModalWithForm>
         )}
