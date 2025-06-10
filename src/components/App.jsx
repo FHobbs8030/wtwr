@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { getClothingItems } from '../utils/clothingApi';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Footer from './Footer.jsx';
 import ItemModal from './ItemModal.jsx';
 import ModalWithForm from './ModalWithForm.jsx';
 import ToggleSwitch from './ToggleSwitch.jsx';
-import { defaultClothingItems } from '../utils/clothingItems';
 import '../blocks/App.css';
 import { fetchWeatherByCoords } from '../utils/weatherApi';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({ name: '', imageUrl: '', weather: '' });
   const [formErrors, setFormErrors] = useState({});
@@ -26,9 +26,7 @@ function App() {
     location: 'Unknown',
   };
 
-  const handleAddClick = () => {
-    setIsAddModalOpen(true);
-  };
+  const handleAddClick = () => setIsAddModalOpen(true);
 
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
@@ -96,6 +94,19 @@ function App() {
         console.error('Weather fetch error:', err);
         setWeatherData(fallbackWeatherData);
       });
+  }, []);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const items = await getClothingItems();
+        setClothingItems(items);
+      } catch (err) {
+        console.error('Error loading clothing items:', err);
+      }
+    };
+
+    fetchItems();
   }, []);
 
   return (
