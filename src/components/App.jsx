@@ -4,6 +4,7 @@ import Main from './Main.jsx';
 import Footer from './Footer.jsx';
 import ItemModal from './ItemModal.jsx';
 import ModalWithForm from './ModalWithForm.jsx';
+import ToggleSwitch from './ToggleSwitch.jsx';
 import { defaultClothingItems } from '../utils/clothingItems';
 import '../blocks/App.css';
 import { fetchWeatherByCoords } from '../utils/weatherApi';
@@ -17,6 +18,7 @@ function App() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(false);
 
   const fallbackWeatherData = {
     temperature: null,
@@ -80,6 +82,10 @@ function App() {
     handleCloseModal();
   };
 
+  const handleToggleUnit = () => {
+    setIsCelsius(!isCelsius);
+  };
+
   useEffect(() => {
     const latitude = 39.1638;
     const longitude = -119.7674;
@@ -96,11 +102,14 @@ function App() {
     <div className="page">
       <div className="app">
         <div className="app__content">
-          <Header onAddClick={handleAddClick} />
+          <Header onAddClick={handleAddClick}>
+            <ToggleSwitch value={isCelsius} onChange={handleToggleUnit} />
+          </Header>
           <Main
             weatherData={weatherData}
             clothingItems={clothingItems}
             onCardClick={handleCardClick}
+            isCelsius={isCelsius}
           />
           <Footer />
         </div>

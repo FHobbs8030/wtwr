@@ -1,28 +1,26 @@
-import React from "react";
-import { getBackgroundImage } from "../utils/weatherImages";
-import "../blocks/WeatherCard.css";
+import React from 'react';
+import '../blocks/WeatherCard.css';
 
-function WeatherCard({ weatherData }) {
-  if (!weatherData || !weatherData.weather || !weatherData.sys) return null;
+function WeatherCard({ weatherData, isCelsius }) {
+  const rawTemp = weatherData?.main?.temp ?? weatherData?.temperature ?? null;
 
-  const { main: weatherMain } = weatherData.weather[0];
-  const { sunrise, sunset } = weatherData.sys;
-  const timestamp = weatherData.dt;
-  const temperature = Math.round(weatherData.main.temp);
+  if (rawTemp === null) {
+    return (
+      <section className="weather-card">
+        <p className="weather-card__temp">--</p>
+      </section>
+    );
+  }
 
-  const backgroundImg = getBackgroundImage(
-    weatherMain,
-    timestamp,
-    sunrise,
-    sunset
-  );
+  const displayTemp = isCelsius
+    ? Math.round((rawTemp - 32) * 5 / 9)
+    : Math.round(rawTemp);
+
+  const unit = isCelsius ? '°C' : '°F';
 
   return (
-    <section
-      className="weather-card"
-      style={{ backgroundImage: `url(${backgroundImg})` }}
-    >
-      <p className="weather-card__temp">{temperature}°F</p>
+    <section className="weather-card">
+      <p className="weather-card__temp">{displayTemp}{unit}</p>
     </section>
   );
 }

@@ -3,7 +3,7 @@ import Logo from "../images/Logo.svg";
 import Avatar from "../images/Avatar.png";
 import "../blocks/Header.css";
 
-function Header({ onAddClick }) {
+function Header({ onAddClick, children }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -16,6 +16,7 @@ function Header({ onAddClick }) {
         <p className="header__date-location">{currentDate}, Carson City</p>
       </div>
       <div className="header__right">
+        {children}
         <button className="header__button" onClick={onAddClick}>
           + Add Clothes
         </button>
