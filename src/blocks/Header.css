@@ -22,8 +22,8 @@
 }
 
 .header__date-location {
-  width: 180px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 190px;
   font-family: Cabinet Grotesk;
   font-weight: 700;
   font-size: 20px;
