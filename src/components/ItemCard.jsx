@@ -1,24 +1,11 @@
-import React from "react";
-import "../blocks/ItemCard.css";
+import React from 'react';
 
 function ItemCard({ item, onCardClick }) {
   return (
-    <div
-      className="card"
-      onClick={() => {
-        console.log("Card clicked!", item.name);
-        onCardClick(item);
-      }}
-    >
-      <div className="card__name">{item.name}</div>
-      <div className="card__image-container">
-        <img
-          src={item.imageUrl || item.link}
-          alt={item.name}
-          className="card__image"
-        />
-      </div>
-    </div>
+    <li className="card" onClick={() => onCardClick(item)}>
+      <p className="card__name">{item.name}</p>
+      <img className="card__image" src={item.imageUrl} alt={item.name} />
+    </li>
   );
 }
 

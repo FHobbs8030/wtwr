@@ -32,6 +32,13 @@ function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
 
   const unit = isCelsius ? '°C' : '°F';
 
+  // ✅ Debug logs
+  console.log('Raw Temperature:', rawTemperature);
+  console.log('Converted Temperature:', convertedTemperature);
+  console.log('Weather Type:', weatherType);
+  console.log('All Clothing Items:', clothingItems);
+  console.log('Filtered Clothing Items:', filteredItems);
+
   return (
     <main className="main">
       <WeatherCard weatherData={weatherData} isCelsius={isCelsius} />
@@ -43,7 +50,7 @@ function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
       <section className="cards">
         <ul className="cards__list">
           {filteredItems.map(item => (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard key={item.id} item={item} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>
