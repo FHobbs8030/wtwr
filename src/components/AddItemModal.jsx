@@ -47,10 +47,10 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
     if (!isFormValid) return;
 
     const newItem = {
-      _id: Date.now().toString(), // Ensures the item has a unique ID
+      _id: Date.now().toString(), 
       name: name.trim(),
-      imageUrl: imageUrl.trim(),
       weather,
+      imageUrl: imageUrl.trim(),
     };
 
     onAddItem(newItem);

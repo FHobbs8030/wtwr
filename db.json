@@ -1,40 +1,61 @@
 {
   "clothingItems": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Cap",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Hoodie",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Sneakers",
       "weather": "cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Coat",
       "weather": "cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Jacket",
       "weather": "cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png"
+    },
+    {
+      "id": "0302",
+      "_id": "1749631234951",
+      "name": "Sunglasses",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Sunglasses_icon.png",
+      "weather": "hot"
+    },
+    {
+      "id": "074e",
+      "_id": "1749632130036",
+      "name": "Ball Cap",
+      "imageUrl": "https://commons.wikimedia.org/wiki/File:Anstosskappe.jpg",
+      "weather": "warm"
+    },
+    {
+      "id": "994d",
+      "_id": "1749633016909",
+      "name": "Coat",
+      "weather": "cold",
+      "imageUrl": "https://m.media-amazon.com/images/I/61ITnBYRGeL._AC_SX679_.jpg"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getClothingItems, addClothingItem } from '../utils/clothingApi';
+import {getClothingItems,addClothingItem,deleteClothingItem,} from '../utils/clothingApi';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Footer from './Footer.jsx';
@@ -8,6 +8,7 @@ import ToggleSwitch from './ToggleSwitch.jsx';
 import '../blocks/App.css';
 import { fetchWeatherByCoords } from '../utils/weatherApi';
 import AddItemModal from './AddItemModal';
+import Profile from './Profile';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -31,18 +32,29 @@ function App() {
     setSelectedItem(null);
   };
 
-  const handleCardClick = (item) => {
+  const handleCardClick = item => {
     setSelectedItem(item);
     setIsItemModalOpen(true);
   };
 
-  const handleAddGarmentSubmit = async (newItem) => {
+  const handleAddGarmentSubmit = async newItem => {
     try {
       const savedItem = await addClothingItem(newItem);
       setClothingItems([savedItem, ...clothingItems]);
       handleCloseModal();
     } catch (err) {
       console.error('Error adding item:', err);
+    }
+  };
+
+  const handleDeleteItem = async itemId => {
+    try {
+      await deleteClothingItem(itemId);
+      setClothingItems(prevItems =>
+        prevItems.filter(item => item.id !== itemId)
+      );
+    } catch (err) {
+      console.error('Error deleting item:', err);
     }
   };
 
@@ -55,8 +67,8 @@ function App() {
     const longitude = -119.7674;
 
     fetchWeatherByCoords(latitude, longitude)
-      .then((data) => setWeatherData(data))
-      .catch((err) => {
+      .then(data => setWeatherData(data))
+      .catch(err => {
         console.error('Weather fetch error:', err);
         setWeatherData(fallbackWeatherData);
       });
@@ -87,6 +99,13 @@ function App() {
             clothingItems={clothingItems}
             onCardClick={handleCardClick}
             isCelsius={isCelsius}
+          />
+          <Profile
+            clothingItems={clothingItems}
+            onCardClick={handleCardClick}
+            onAddClick={handleAddClick}
+            onDeleteItem={handleDeleteItem}
+            onLogout={() => console.log('Logout pressed')}
           />
           <Footer />
         </div>

@@ -12,6 +12,30 @@
   padding: 0;
   list-style: none;
 }
+
+.card__delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  color: #ff4d4f;
+  font-size: 18px;
+  font-weight: bold;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.card__delete-button:hover {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
 /* For medium screens */
 @media screen and (max-width: 1200px) {
   .cards__list {
