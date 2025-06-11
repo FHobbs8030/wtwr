@@ -4,12 +4,18 @@ export const getClothingItems = () => {
   return fetch(BASE_URL).then((res) => res.json());
 };
 
-export const addClothingItem = (item) => {
-  return fetch(BASE_URL, {
+export const addClothingItem = async (item) => {
+  const response = await fetch(BASE_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item),
-  }).then((res) => res.json());
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add clothing item');
+  }
+
+  return response.json();
 };
 
 export const deleteClothingItem = (id) => {
