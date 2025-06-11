@@ -37,25 +37,25 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png"
     },
     {
-      "id": "0302",
-      "_id": "1749631234951",
-      "name": "Sunglasses",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Sunglasses_icon.png",
-      "weather": "hot"
-    },
-    {
-      "id": "074e",
+      "id": "6",
       "_id": "1749632130036",
       "name": "Ball Cap",
       "imageUrl": "https://commons.wikimedia.org/wiki/File:Anstosskappe.jpg",
       "weather": "warm"
     },
     {
-      "id": "994d",
+      "id": "7",
       "_id": "1749633016909",
       "name": "Coat",
       "weather": "cold",
       "imageUrl": "https://m.media-amazon.com/images/I/61ITnBYRGeL._AC_SX679_.jpg"
+    },
+    {
+      "id": "40f9",
+      "_id": "1749678233508",
+      "name": "Sunglasses",
+      "weather": "hot",
+      "imageUrl": "https://unsplash.com/photos/gold-colored-framed-hippie-sunglasses-on-white-surface-1-nx1QR5dTE"
     }
   ]
 }

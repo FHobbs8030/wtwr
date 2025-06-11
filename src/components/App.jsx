@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {getClothingItems,addClothingItem,deleteClothingItem,} from '../utils/clothingApi';
+import { getClothingItems, addClothingItem, deleteClothingItem } from '../utils/clothingApi';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Footer from './Footer.jsx';
@@ -8,7 +8,7 @@ import ToggleSwitch from './ToggleSwitch.jsx';
 import '../blocks/App.css';
 import { fetchWeatherByCoords } from '../utils/weatherApi';
 import AddItemModal from './AddItemModal';
-import Profile from './Profile';
+import { CurrentTemperatureUnitContext } from '../contextStore/CurrentTemperatureUnitContext';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -32,12 +32,12 @@ function App() {
     setSelectedItem(null);
   };
 
-  const handleCardClick = item => {
+  const handleCardClick = (item) => {
     setSelectedItem(item);
     setIsItemModalOpen(true);
   };
 
-  const handleAddGarmentSubmit = async newItem => {
+  const handleAddGarmentSubmit = async (newItem) => {
     try {
       const savedItem = await addClothingItem(newItem);
       setClothingItems([savedItem, ...clothingItems]);
@@ -47,19 +47,13 @@ function App() {
     }
   };
 
-  const handleDeleteItem = async itemId => {
+  const handleDeleteItem = async (id) => {
     try {
-      await deleteClothingItem(itemId);
-      setClothingItems(prevItems =>
-        prevItems.filter(item => item.id !== itemId)
-      );
+      await deleteClothingItem(id);
+      setClothingItems((prevItems) => prevItems.filter((item) => item.id !== id && item._id !== id));
     } catch (err) {
       console.error('Error deleting item:', err);
     }
-  };
-
-  const handleToggleUnit = () => {
-    setIsCelsius(!isCelsius);
   };
 
   useEffect(() => {
@@ -67,8 +61,8 @@ function App() {
     const longitude = -119.7674;
 
     fetchWeatherByCoords(latitude, longitude)
-      .then(data => setWeatherData(data))
-      .catch(err => {
+      .then((data) => setWeatherData(data))
+      .catch((err) => {
         console.error('Weather fetch error:', err);
         setWeatherData(fallbackWeatherData);
       });
@@ -88,41 +82,37 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
-      <div className="app">
-        <div className="app__content">
-          <Header onAddClick={handleAddClick}>
-            <ToggleSwitch value={isCelsius} onChange={handleToggleUnit} />
-          </Header>
-          <Main
-            weatherData={weatherData}
-            clothingItems={clothingItems}
-            onCardClick={handleCardClick}
-            isCelsius={isCelsius}
-          />
-          <Profile
-            clothingItems={clothingItems}
-            onCardClick={handleCardClick}
-            onAddClick={handleAddClick}
-            onDeleteItem={handleDeleteItem}
-            onLogout={() => console.log('Logout pressed')}
-          />
-          <Footer />
+    <CurrentTemperatureUnitContext.Provider value={{ isCelsius, setIsCelsius }}>
+      <div className="page">
+        <div className="app">
+          <div className="app__content">
+            <Header onAddClick={handleAddClick}>
+              <ToggleSwitch />
+            </Header>
+            <Main
+              weatherData={weatherData}
+              clothingItems={clothingItems}
+              onCardClick={handleCardClick}
+              isCelsius={isCelsius}
+              onDeleteItem={handleDeleteItem}
+            />
+            <Footer />
+          </div>
+
+          {selectedItem && isItemModalOpen && (
+            <ItemModal item={selectedItem} onClose={handleCloseModal} />
+          )}
+
+          {isAddModalOpen && (
+            <AddItemModal
+              isOpen={isAddModalOpen}
+              onCloseModal={handleCloseModal}
+              onAddItem={handleAddGarmentSubmit}
+            />
+          )}
         </div>
-
-        {selectedItem && isItemModalOpen && (
-          <ItemModal item={selectedItem} onClose={handleCloseModal} />
-        )}
-
-        {isAddModalOpen && (
-          <AddItemModal
-            isOpen={isAddModalOpen}
-            onCloseModal={handleCloseModal}
-            onAddItem={handleAddGarmentSubmit}
-          />
-        )}
       </div>
-    </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
