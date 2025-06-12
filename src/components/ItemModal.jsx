@@ -1,22 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../blocks/ItemModal.css';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
 
-function ItemModal({ item, onClose, onDeleteItem }) {
-  const [showConfirm, setShowConfirm] = useState(false);
-
-  const handleDeleteClick = () => {
-    setShowConfirm(true);
-  };
-
+function ItemModal({ item, onClose, onConfirmDelete }) {
   const handleConfirmDelete = () => {
-    onDeleteItem(item.id || item._id);
-    setShowConfirm(false);
-    onClose();
-  };
-
-  const handleCancelDelete = () => {
-    setShowConfirm(false);
+    onConfirmDelete();
   };
 
   return (
@@ -30,27 +17,17 @@ function ItemModal({ item, onClose, onDeleteItem }) {
           alt={item.name}
           className="item-modal__image"
         />
-
         <div className="item-modal__footer">
-          <div>
-            <p className="item-modal__caption">{item.name}</p>
-            <p className="item-modal__weather">Weather: {item.weather}</p>
-          </div>
+          <p className="item-modal__caption">{item.name}</p>
+          <p className="item-modal__weather">Weather: {item.weather}</p>
           <button
             className="item-modal__delete-button"
-            onClick={handleDeleteClick}
+            onClick={handleConfirmDelete}
           >
             Delete Item
           </button>
         </div>
       </div>
-
-      {showConfirm && (
-        <ConfirmDeleteModal
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
-      )}
     </div>
   );
 }
