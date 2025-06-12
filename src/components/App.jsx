@@ -5,6 +5,7 @@ import Main from './Main.jsx';
 import Footer from './Footer.jsx';
 import ItemModal from './ItemModal.jsx';
 import ToggleSwitch from './ToggleSwitch.jsx';
+import ConfirmDeleteModal from './ConfirmDeleteModal.jsx';
 import '../blocks/App.css';
 import { fetchWeatherByCoords } from '../utils/weatherApi';
 import AddItemModal from './AddItemModal';
@@ -17,6 +18,8 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isCelsius, setIsCelsius] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const fallbackWeatherData = {
     temperature: null,
@@ -51,6 +54,8 @@ function App() {
     try {
       await deleteClothingItem(id);
       setClothingItems((prevItems) => prevItems.filter((item) => item.id !== id && item._id !== id));
+      setIsItemModalOpen(false);
+      setIsConfirmModalOpen(false);
     } catch (err) {
       console.error('Error deleting item:', err);
     }
@@ -94,13 +99,23 @@ function App() {
               clothingItems={clothingItems}
               onCardClick={handleCardClick}
               isCelsius={isCelsius}
-              onDeleteItem={handleDeleteItem}
+              onDeleteItem={(item) => {
+                setItemToDelete(item);
+                setIsConfirmModalOpen(true);
+              }}
             />
             <Footer />
           </div>
 
           {selectedItem && isItemModalOpen && (
-            <ItemModal item={selectedItem} onClose={handleCloseModal} />
+            <ItemModal
+              item={selectedItem}
+              onClose={handleCloseModal}
+              onDelete={() => {
+                setItemToDelete(selectedItem);
+                setIsConfirmModalOpen(true);
+              }}
+            />
           )}
 
           {isAddModalOpen && (
@@ -108,6 +123,13 @@ function App() {
               isOpen={isAddModalOpen}
               onCloseModal={handleCloseModal}
               onAddItem={handleAddGarmentSubmit}
+            />
+          )}
+
+          {isConfirmModalOpen && (
+            <ConfirmDeleteModal
+              onConfirm={() => handleDeleteItem(itemToDelete._id || itemToDelete.id)}
+              onCancel={() => setIsConfirmModalOpen(false)}
             />
           )}
         </div>
