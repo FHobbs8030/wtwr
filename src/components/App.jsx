@@ -7,7 +7,7 @@ import ItemModal from './ItemModal.jsx';
 import ToggleSwitch from './ToggleSwitch.jsx';
 import ConfirmDeleteModal from './ConfirmDeleteModal.jsx';
 import '../blocks/App.css';
-import { fetchWeatherByCoords } from '../utils/weatherApi';
+import { fetchWeatherByCoords, filterWeatherData } from '../utils/weatherApi';
 import AddItemModal from './AddItemModal';
 import { CurrentTemperatureUnitContext } from '../contextStore/CurrentTemperatureUnitContext';
 
@@ -66,7 +66,10 @@ function App() {
     const longitude = -119.7674;
 
     fetchWeatherByCoords(latitude, longitude)
-      .then((data) => setWeatherData(data))
+      .then((data) => {
+        const filtered = filterWeatherData(data);
+        setWeatherData(filtered);
+      })
       .catch((err) => {
         console.error('Weather fetch error:', err);
         setWeatherData(fallbackWeatherData);
