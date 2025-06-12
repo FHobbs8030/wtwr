@@ -16,7 +16,7 @@ function Header({ onAddClick, children }) {
         <p className="header__date-location">{currentDate}, Carson City</p>
       </div>
       <div className="header__right">
-        {children}
+        <div className="header__toggle-wrapper">{children}</div>
         <button className="header__button" onClick={onAddClick}>
           + Add Clothes
         </button>

@@ -1,3 +1,6 @@
+/* Header.css */
+@import url('../vendor/fonts/fonts.css');
+
 .header {
   width: calc(100% - 80px);
   max-width: 1440px;
@@ -29,6 +32,12 @@
   font-size: 20px;
   line-height: 24px;
   margin: 11px 0 13px 0;
+}
+
+.header__toggle-wrapper {
+  display: flex;
+  align-items: center;
+  height: 40px; /* Ensures vertical centering */
 }
 
 .header__button {
@@ -86,5 +95,10 @@
     margin: 0.5rem 0;
     width: 100%;
     text-align: center;
+  }
+
+  .header__toggle-wrapper {
+    height: auto;
+    margin-bottom: 1rem;
   }
 }

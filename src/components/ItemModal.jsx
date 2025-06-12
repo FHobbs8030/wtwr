@@ -1,19 +1,10 @@
-import React, { useEffect } from "react";
-import useEscapeKey from "../hooks/useEscapeKey";
-import "../blocks/ItemModal.css";
+import React from 'react';
+import '../blocks/ItemModal.css';
 
-function ItemModal({ item, onClose }) {
-  useEscapeKey(onClose);
-
-  const handleOverlayClick = (e) => {
-    if (e.target.classList.contains("item-modal")) {
-      onClose();
-    }
-  };
-
+function ItemModal({ item, onClose, onDeleteItem }) {
   return (
-    <div className="item-modal" onClick={handleOverlayClick}>
-      <div className="item-modal__content">
+    <div className="item-modal" onClick={onClose}>
+      <div className="item-modal__content" onClick={(e) => e.stopPropagation()}>
         <button className="item-modal__close" onClick={onClose}>
           &times;
         </button>
@@ -22,8 +13,19 @@ function ItemModal({ item, onClose }) {
           alt={item.name}
           className="item-modal__image"
         />
-        <p className="item-modal__caption">{item.name}</p>
-        <p className="item-modal__weather">Weather: {item.weather}</p>
+
+        <div className="item-modal__footer">
+          <div>
+            <p className="item-modal__caption">{item.name}</p>
+            <p className="item-modal__weather">Weather: {item.weather}</p>
+          </div>
+          <button
+            className="item-modal__delete-button"
+            onClick={() => onDeleteItem(item)}
+          >
+            Delete Item
+          </button>
+        </div>
       </div>
     </div>
   );
