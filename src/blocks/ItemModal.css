@@ -79,7 +79,7 @@
   cursor: pointer;
   padding: 0;
   font-size: 14px;
-  align-self: flex-end;
+  align-self: flex-start;
   margin-left: auto;
 }
 
