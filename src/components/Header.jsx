@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../images/Logo.svg";
 import Avatar from "../images/Avatar.png";
 import "../blocks/Header.css";
@@ -17,9 +18,17 @@ function Header({ onAddClick, children }) {
       </div>
       <div className="header__right">
         <div className="header__toggle-wrapper">{children}</div>
+
+        {/* ✅ Navigation links */}
+        <nav className="header__nav">
+          <Link to="/" className="header__nav-link">Home</Link>
+          <Link to="/profile" className="header__nav-link">Profile</Link>
+        </nav>
+
         <button className="header__button" onClick={onAddClick}>
           + Add Clothes
         </button>
+
         <div className="header__profile">
           <p className="header__username">Terrence Tegegne</p>
           <img src={Avatar} alt="User avatar" className="header__avatar" />

@@ -39,10 +39,15 @@ function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
           ? `Today is ${convertedTemperature}${unit} / You may want to wear:`
           : `Can't fetch weather / Showing all items:`}
       </p>
+
       <section className="cards">
         <ul className="cards__list">
           {filteredItems.map(item => (
-            <ItemCard key={item.id || item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard
+              key={item.id || item._id}
+              item={item}
+              onCardClick={onCardClick}
+            />
           ))}
         </ul>
       </section>

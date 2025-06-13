@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { getClothingItems, addClothingItem, deleteClothingItem } from '../utils/clothingApi';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Footer from './Footer.jsx';
 import ItemModal from './ItemModal.jsx';
 import ToggleSwitch from './ToggleSwitch.jsx';
 import ConfirmDeleteModal from './ConfirmDeleteModal.jsx';
+import AddItemModal from './AddItemModal';
+import Profile from './Profile.jsx';
 import '../blocks/App.css';
 import { fetchWeatherByCoords, filterWeatherData } from '../utils/weatherApi';
-import AddItemModal from './AddItemModal';
+import { getClothingItems, addClothingItem, deleteClothingItem } from '../utils/clothingApi';
 import { CurrentTemperatureUnitContext } from '../contextStore/CurrentTemperatureUnitContext';
 
 function App() {
@@ -66,8 +68,6 @@ function App() {
     fetchWeatherByCoords(latitude, longitude)
       .then((data) => {
         const filtered = filterWeatherData(data);
-        console.log('✅ Raw API data:', data);
-        console.log('✅ Filtered weather data:', filtered);
         setWeatherData(filtered);
       })
       .catch((err) => {
@@ -90,58 +90,70 @@ function App() {
   }, []);
 
   return (
-    <CurrentTemperatureUnitContext.Provider value={{ isCelsius, setIsCelsius }}>
-      <div className="page">
-        <div className="app">
-          <div className="app__content">
-            <Header onAddClick={handleAddClick}>
-              <ToggleSwitch />
-            </Header>
-            <Main
-              weatherData={weatherData}
-              clothingItems={clothingItems}
-              onCardClick={handleCardClick}
-              isCelsius={isCelsius}
-            />
-            <Footer />
+    <BrowserRouter>
+      <CurrentTemperatureUnitContext.Provider value={{ isCelsius, setIsCelsius }}>
+        <div className="page">
+          <div className="app">
+            <div className="app__content">
+              <Header onAddClick={handleAddClick}>
+                <ToggleSwitch />
+              </Header>
+
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Main
+                      weatherData={weatherData}
+                      clothingItems={clothingItems}
+                      onCardClick={handleCardClick}
+                      isCelsius={isCelsius}
+                    />
+                  }
+                />
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+
+              <Footer />
+            </div>
+
+            {selectedItem && isItemModalOpen && (
+              <ItemModal
+                item={selectedItem}
+                onClose={handleCloseModal}
+                onConfirmDelete={() => {
+                  setItemToDelete(selectedItem);
+                  setIsConfirmModalOpen(true);
+                }}
+              />
+            )}
+
+            {isAddModalOpen && (
+              <AddItemModal
+                isOpen={isAddModalOpen}
+                onCloseModal={handleCloseModal}
+                onAddItem={handleAddGarmentSubmit}
+              />
+            )}
+
+            {isConfirmModalOpen && (
+              <ConfirmDeleteModal
+                onConfirm={() => {
+                  if (itemToDelete?.id) {
+                    handleDeleteItem(itemToDelete.id);
+                    setIsConfirmModalOpen(false);
+                    setIsItemModalOpen(false);
+                  } else {
+                    console.error('No valid ID for deletion.');
+                  }
+                }}
+                onCancel={() => setIsConfirmModalOpen(false)}
+              />
+            )}
           </div>
-
-          {selectedItem && isItemModalOpen && (
-            <ItemModal
-              item={selectedItem}
-              onClose={handleCloseModal}
-              onConfirmDelete={() => {
-                setItemToDelete(selectedItem);
-                setIsConfirmModalOpen(true);
-              }}
-            />
-          )}
-
-          {isAddModalOpen && (
-            <AddItemModal
-              isOpen={isAddModalOpen}
-              onCloseModal={handleCloseModal}
-              onAddItem={handleAddGarmentSubmit}
-            />
-          )}
-
-          {isConfirmModalOpen && (
-            <ConfirmDeleteModal
-              onConfirm={() => {
-                if (itemToDelete?.id) {
-                  handleDeleteItem(itemToDelete.id);
-                  setIsConfirmModalOpen(false);
-                  setIsItemModalOpen(false);
-                } else {
-                  console.error('No valid ID for deletion.');
-                }
-              }}
-              onCancel={() => setIsConfirmModalOpen(false)}
-            />
-          )}
         </div>
-      </div>
-    </CurrentTemperatureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
+    </BrowserRouter>
   );
 }
 
