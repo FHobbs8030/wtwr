@@ -53,9 +53,7 @@ function App() {
   const handleDeleteItem = async (id) => {
     try {
       await deleteClothingItem(id);
-      setClothingItems((prevItems) =>
-        prevItems.filter((item) => item.id !== id && item._id !== id)
-      );
+      setClothingItems((prevItems) => prevItems.filter((item) => item.id !== id));
     } catch (err) {
       console.error('Error deleting item:', err);
     }
@@ -130,8 +128,8 @@ function App() {
           {isConfirmModalOpen && (
             <ConfirmDeleteModal
               onConfirm={() => {
-                if (itemToDelete?._id || itemToDelete?.id) {
-                  handleDeleteItem(itemToDelete._id || itemToDelete.id);
+                if (itemToDelete?.id) {
+                  handleDeleteItem(itemToDelete.id);
                   setIsConfirmModalOpen(false);
                   setIsItemModalOpen(false);
                 } else {
