@@ -8,7 +8,7 @@ function ItemModal({ item, onClose, onConfirmDelete }) {
 
   return (
     <div className="item-modal" onClick={onClose}>
-      <div className="item-modal__content" onClick={(e) => e.stopPropagation()}>
+      <div className="item-modal__content" onClick={e => e.stopPropagation()}>
         <button className="item-modal__close" onClick={onClose}>
           &times;
         </button>
@@ -18,8 +18,10 @@ function ItemModal({ item, onClose, onConfirmDelete }) {
           className="item-modal__image"
         />
         <div className="item-modal__footer">
-          <p className="item-modal__caption">{item.name}</p>
-          <p className="item-modal__weather">Weather: {item.weather}</p>
+          <div className="item-modal__text-group">
+            <p className="item-modal__caption">{item.name}</p>
+            <p className="item-modal__weather">Weather: {item.weather}</p>
+          </div>
           <button
             className="item-modal__delete-button"
             onClick={handleConfirmDelete}

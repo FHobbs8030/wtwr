@@ -6,8 +6,7 @@ import '../blocks/Cards.css';
 import '../blocks/Main.css';
 
 function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
-  const rawTemperature =
-    weatherData?.main?.temp ?? weatherData?.temperature ?? null;
+  const rawTemperature = weatherData?.temp ?? null;
 
   const convertedTemperature =
     typeof rawTemperature === 'number'
@@ -16,14 +15,7 @@ function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
         : Math.round(rawTemperature)
       : null;
 
-  const getWeatherType = () => {
-    if (typeof rawTemperature !== 'number') return null;
-    if (rawTemperature >= 75) return 'hot';
-    if (rawTemperature >= 66) return 'warm';
-    return 'cold';
-  };
-
-  const weatherType = getWeatherType();
+  const weatherType = weatherData?.type ?? null;
 
   const filteredItems =
     weatherType === null
@@ -50,7 +42,7 @@ function Main({ weatherData, clothingItems, onCardClick, isCelsius }) {
       <section className="cards">
         <ul className="cards__list">
           {filteredItems.map(item => (
-            <ItemCard key={item.id} item={item} onCardClick={onCardClick} />
+            <ItemCard key={item.id || item._id} item={item} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

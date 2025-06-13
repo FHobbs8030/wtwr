@@ -38,31 +38,40 @@
     },
     {
       "id": "6",
-      "_id": "1749632130036",
-      "name": "Ball Cap",
+      "name": "Cap",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Anstosskappe.jpg/960px-Anstosskappe.jpg?20120605132422",
       "weather": "warm"
     },
     {
       "id": "7",
-      "_id": "1749633016909",
       "name": "Coat",
       "weather": "cold",
       "imageUrl": "https://m.media-amazon.com/images/I/61ITnBYRGeL._AC_SX679_.jpg"
     },
     {
-      "id": "40f9",
-      "_id": "1749678233508",
+      "id": "8",
       "name": "Sunglasses",
       "weather": "hot",
       "imageUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3VuZ2xhc3Nlc3xlbnwwfHwwfHx8MA%3D%3D"
     },
     {
-      "id": "026c",
-      "_id": "1749698828301",
+      "id": "9",
       "name": "Sneakers",
       "weather": "warm",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Nike_dunk.jpg/250px-Nike_dunk.jpg"
+    },
+    {
+      "id": "10",
+      "_id": "1749772115743",
+      "name": "Cap",
+      "weather": "warm",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1680859126205-1c593bb4f9e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fEJhbGwlMjBDYXB8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": "11",
+      "name": "Cap",
+      "weather": "cold",
+      "imageUrl": "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FwfGVufDB8fDB8fHww"
     }
   ]
 }

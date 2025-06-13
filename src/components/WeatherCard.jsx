@@ -2,8 +2,8 @@ import '../blocks/WeatherCard.css';
 import { getBackgroundImage } from '../utils/getBackgroundImage'; 
 
 function WeatherCard({ weatherData, isCelsius }) {
-  const rawTemp = weatherData?.main?.temp ?? weatherData?.temperature ?? null;
-  const condition = weatherData?.weather?.[0]?.main;
+  const rawTemp = weatherData?.temp ?? null;
+  const condition = weatherData?.condition ?? '';
   const timestamp = weatherData?.dt;
   const sunrise = weatherData?.sys?.sunrise;
   const sunset = weatherData?.sys?.sunset;

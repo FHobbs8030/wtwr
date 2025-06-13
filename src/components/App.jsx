@@ -53,9 +53,9 @@ function App() {
   const handleDeleteItem = async (id) => {
     try {
       await deleteClothingItem(id);
-      setClothingItems((prevItems) => prevItems.filter((item) => item.id !== id && item._id !== id));
-      setIsItemModalOpen(false);
-      setIsConfirmModalOpen(false);
+      setClothingItems((prevItems) =>
+        prevItems.filter((item) => item.id !== id && item._id !== id)
+      );
     } catch (err) {
       console.error('Error deleting item:', err);
     }
@@ -68,6 +68,8 @@ function App() {
     fetchWeatherByCoords(latitude, longitude)
       .then((data) => {
         const filtered = filterWeatherData(data);
+        console.log('✅ Raw API data:', data);
+        console.log('✅ Filtered weather data:', filtered);
         setWeatherData(filtered);
       })
       .catch((err) => {
@@ -102,10 +104,6 @@ function App() {
               clothingItems={clothingItems}
               onCardClick={handleCardClick}
               isCelsius={isCelsius}
-              onDeleteItem={(item) => {
-                setItemToDelete(item);
-                setIsConfirmModalOpen(true);
-              }}
             />
             <Footer />
           </div>
@@ -114,7 +112,7 @@ function App() {
             <ItemModal
               item={selectedItem}
               onClose={handleCloseModal}
-              onDelete={() => {
+              onConfirmDelete={() => {
                 setItemToDelete(selectedItem);
                 setIsConfirmModalOpen(true);
               }}
@@ -131,7 +129,15 @@ function App() {
 
           {isConfirmModalOpen && (
             <ConfirmDeleteModal
-              onConfirm={() => handleDeleteItem(itemToDelete._id || itemToDelete.id)}
+              onConfirm={() => {
+                if (itemToDelete?._id || itemToDelete?.id) {
+                  handleDeleteItem(itemToDelete._id || itemToDelete.id);
+                  setIsConfirmModalOpen(false);
+                  setIsItemModalOpen(false);
+                } else {
+                  console.error('No valid ID for deletion.');
+                }
+              }}
               onCancel={() => setIsConfirmModalOpen(false)}
             />
           )}

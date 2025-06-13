@@ -1,71 +1,69 @@
 .confirm-modal {
   position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  align-items: center;
+  z-index: 1100; /* Ensure it's above other modals */
 }
 
-.confirm-modal__content {
-  background: white;
-  border-radius: 12px;
+.confirm-modal__box {
+  background: #fff; /* White background */
   padding: 32px;
-  max-width: 500px;
-  width: 100%;
+  border-radius: 12px;
+  width: 500px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   position: relative;
+  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1200;
 }
 
 .confirm-modal__close {
   position: absolute;
-  top: 16px;
+  top: 12px;
   right: 16px;
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.confirm-modal__close:hover {
-  color: #000;
-}
-
-.confirm-modal__text {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  color: #000;
-}
-
-.confirm-modal__delete {
   background: none;
   border: none;
-  color: #ff5200;
-  font-weight: 600;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
-  margin-bottom: 16px;
 }
 
-.confirm-modal__delete:hover {
-  text-decoration: underline;
+.confirm-modal__message {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.confirm-modal__subtext {
+  font-size: 16px;
+  color: #555;
+}
+
+.confirm-modal__actions {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.confirm-modal__confirm {
+  color: #f03;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .confirm-modal__cancel {
   background: none;
   border: none;
   font-size: 16px;
-  font-weight: 600;
-  color: #000;
   cursor: pointer;
-}
-
-.confirm-modal__cancel:hover {
-  text-decoration: underline;
+  color: #000;
 }

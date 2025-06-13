@@ -39,20 +39,29 @@
 .item-modal__image {
   width: 100%;
   height: auto;
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .item-modal__footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 16px;
 }
 
+.item-modal__text-group {
+  display: flex;
+  flex-direction: column;
+}
+
 .item-modal__caption {
+  font-family: Cabinet Grotesk;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 24px;
   margin: 0;
 }
 
@@ -65,7 +74,7 @@
 .item-modal__delete-button {
   background: none;
   border: none;
-  color: red;
+  color: #ff4d00;
   font-weight: bold;
   cursor: pointer;
   padding: 0;
